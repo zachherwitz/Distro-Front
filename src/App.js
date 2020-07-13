@@ -1,5 +1,5 @@
 import React from 'react';
-import CallsheetCreate from './components/CallsheetCreate';
+import CallsheetDisplay from './components/CallsheetDisplay';
 import Navigation from './components/Navigation'
 import UserDisplay from './components/UserDisplay';
 
@@ -34,6 +34,13 @@ class App extends React.Component {
     axios.get('http://localhost:3000/users').then((response) => {
       this.setState({
         users: response.data
+      })
+    })
+    axios.get('http://localhost:3000/callsheet').then((response) => {
+      let currentCallsheetIndex = response.data.length - 1;
+      console.log("Current Callsheet is:", response.data[currentCallsheetIndex]);
+      this.setState({
+        callsheet: response.data[currentCallsheetIndex]
       })
     })
   }
@@ -93,8 +100,11 @@ class App extends React.Component {
             refreshUserList={this.refreshUserList}/>
             : null}
         {this.state.route === "createCallsheet" ?
-          <CallsheetCreate
-            createCallsheet={this.createCallsheet}/>
+          <CallsheetDisplay
+            allUsers={this.state.users}
+            callsheet={this.state.callsheet}
+            createCallsheet={this.createCallsheet}
+            displayUser={this.state.displayUser}/>
             : null}
       </div>
     )

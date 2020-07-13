@@ -1,13 +1,14 @@
 import React from 'react';
+import AllUsers from './AllUsers'
 
-class CallsheetCreate extends React.Component {
+class NewCallsheetForm extends React.Component {
   state = {
 
   }
 
-  composeCallsheet = () => {
+  composeCallsheet = (e) => {
+    e.preventDefault();
     let allCalledArray = this.state.allCalled.split(',')
-
     let callsheetObject = {
       date: this.state.date,
       episode: this.state.episode,
@@ -54,7 +55,7 @@ class CallsheetCreate extends React.Component {
   }
 
   render = () => {
-    return <div>
+    return <div style={{display:'flex'}}>
       <form onSubmit={this.composeCallsheet}>
         <input
           onKeyUp={this.newInput}
@@ -106,8 +107,11 @@ class CallsheetCreate extends React.Component {
         <br/>
         <input type="submit" value="Submit Callsheet"/>
       </form>
+      <AllUsers
+        allUsers={this.props.allUsers}
+        displayUserProfile={this.props.displayUserProfile}/>
     </div>
   }
 }
 
-export default CallsheetCreate
+export default NewCallsheetForm
