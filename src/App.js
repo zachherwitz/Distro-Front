@@ -1,5 +1,6 @@
 import React from 'react';
 import CallsheetCreate from './components/CallsheetCreate';
+import Navigation from './components/Navigation'
 import UserDisplay from './components/UserDisplay';
 
 
@@ -69,27 +70,18 @@ class App extends React.Component {
     // DESTRUCTURING :: displayUser now equals this.state.displayUser //
     return (
       <div>
-        <nav style={{display: 'flex', justifyContent: 'space-around', paddingTop: '20px'}}>
-          <button
-            onClick={this.changeRoute}
-            route="allUsers"
-            href="#">All Users View</button>
-          <button
-            onClick={this.changeRoute}
-            route="createCallsheet"
-            href="#">Call Sheet View</button>
-        </nav>
-          {this.state.route === "allUsers" ?
-            <UserDisplay
-              allUsers={this.state.users}
-              displayUser={this.state.displayUser}
-              displayUserProfile={this.displayUserProfile}
-              refreshUserList={this.refreshUserList}/>
-              : null}
-          {this.state.route === "createCallsheet" ?
-            <CallsheetCreate
-              createCallsheet={this.createCallsheet}/>
-              : null}
+        <Navigation changeRoute={this.changeRoute}/>
+        {this.state.route === "allUsers" ?
+          <UserDisplay
+            allUsers={this.state.users}
+            displayUser={this.state.displayUser}
+            displayUserProfile={this.displayUserProfile}
+            refreshUserList={this.refreshUserList}/>
+            : null}
+        {this.state.route === "createCallsheet" ?
+          <CallsheetCreate
+            createCallsheet={this.createCallsheet}/>
+            : null}
       </div>
     )
   }
