@@ -63,6 +63,13 @@ class App extends React.Component {
     })
   }
 
+  refreshSingleUser = (obj) => {
+    let updatedUserToDisplay = obj
+    this.setState({
+      displayUser: updatedUserToDisplay
+    })
+  }
+
   refreshUserList = () => {
     axios.get('http://localhost:3000/users').then((response) => {
       this.setState({
@@ -82,6 +89,7 @@ class App extends React.Component {
             clearDisplayedUser={this.clearDisplayedUser}
             displayUser={this.state.displayUser}
             displayUserProfile={this.displayUserProfile}
+            refreshSingleUser={this.refreshSingleUser}
             refreshUserList={this.refreshUserList}/>
             : null}
         {this.state.route === "createCallsheet" ?

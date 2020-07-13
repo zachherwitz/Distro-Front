@@ -1,7 +1,12 @@
 import React from 'react';
+import UpdateUserForm from './UpdateUserForm'
 import axios from 'axios';
 
 class SingleUser extends React.Component {
+  state = {
+    formShow: false
+  }
+
   deleteUser = () => {
     let userId = this.props.displayUser._id;
     axios.delete('http://localhost:3000/users/' + userId).then((response) => {
@@ -9,6 +14,10 @@ class SingleUser extends React.Component {
       this.props.clearDisplayedUser()
       console.log(response);
     })
+  }
+
+  toggleEditForm = () => {
+    this.setState({formShow:!this.state.formShow})
   }
 
   render = () => {
@@ -29,6 +38,8 @@ class SingleUser extends React.Component {
           </ul>
         </ul>
       <button onClick={this.deleteUser}>Delete User</button>
+      <button onClick={this.toggleEditForm}>Edit User</button>
+      {this.state.formShow ? <UpdateUserForm displayUser={this.props.displayUser} refreshSingleUser={this.props.refreshSingleUser}/> : null}
       </div>
     </div>
   }

@@ -14,6 +14,7 @@ class UserDisplay extends React.Component {
         {this.props.displayUser ?
           <SingleUser
             displayUser={this.props.displayUser}
+            refreshSingleUser={this.props.refreshSingleUser}
             refreshUserList={this.props.refreshUserList}
             clearDisplayedUser={this.props.clearDisplayedUser}/>
           : null}
