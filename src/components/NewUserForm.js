@@ -51,6 +51,7 @@ class NewUserForm extends React.Component {
       <h1>CREATE A NEW USER!</h1>
       <form onSubmit={this.createNewUser}>
         <input
+          autoComplete="off"
           required
           ref={input => this.newName = input}
           onKeyUp={this.handleInput}
@@ -59,6 +60,7 @@ class NewUserForm extends React.Component {
           placeholder="name"/>
         <br/>
         <input
+          autoComplete="off"
           required
           ref={input => this.newDepartment = input}
           onKeyUp={this.handleInput}
@@ -67,6 +69,7 @@ class NewUserForm extends React.Component {
           placeholder="department"/>
         <br/>
         <input
+          autoComplete="off"
           required
           ref={input => this.newPhone = input}
           onKeyUp={this.handleInput}
@@ -75,6 +78,7 @@ class NewUserForm extends React.Component {
           placeholder="phone number"/>
         <br/>
         <input
+          autoComplete="off"
           required
           ref={input => this.newEmail = input}
           onKeyUp={this.handleInput}

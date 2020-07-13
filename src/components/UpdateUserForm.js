@@ -36,6 +36,7 @@ class UpdateUserForm extends React.Component {
     return <div>
     <form onSubmit={this.updateUser}>
       <input
+        autoComplete="off"
         ref={input => this.updatedName = input}
         onKeyUp={this.handleInput}
         id="name"
@@ -43,6 +44,7 @@ class UpdateUserForm extends React.Component {
         defaultValue={this.props.displayUser.name}/>
       <br/>
       <input
+        autoComplete="off"
         ref={input => this.updatedDepartment = input}
         onKeyUp={this.handleInput}
         id="department"
@@ -50,6 +52,7 @@ class UpdateUserForm extends React.Component {
         defaultValue={this.props.displayUser.department}/>
       <br/>
       <input
+        autoComplete="off"
         ref={input => this.updatedPhone = input}
         onKeyUp={this.handleInput}
         id="phone"
@@ -57,6 +60,7 @@ class UpdateUserForm extends React.Component {
         defaultValue={this.props.displayUser.phone}/>
       <br/>
       <input
+        autoComplete="off"
         ref={input => this.updatedEmail = input}
         onKeyUp={this.handleInput}
         id="email"
