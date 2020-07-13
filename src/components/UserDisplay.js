@@ -12,7 +12,10 @@ class UserDisplay extends React.Component {
           allUsers={this.props.allUsers}
           displayUserProfile={this.props.displayUserProfile}/>
         {this.props.displayUser ?
-          <SingleUser displayUser={this.props.displayUser}/>
+          <SingleUser
+            displayUser={this.props.displayUser}
+            refreshUserList={this.props.refreshUserList}
+            clearDisplayedUser={this.props.clearDisplayedUser}/>
           : null}
       </div>
     </div>

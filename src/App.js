@@ -24,6 +24,11 @@ class App extends React.Component {
     })
   }
 
+  // Clear displayed user in state after delete
+  clearDisplayedUser = () => {
+    this.setState({displayUser:''})
+  }
+
   // Gets and stores all the data as soon as the app is mounted
   componentDidMount = () => {
     axios.get('http://localhost:3000/users').then((response) => {
@@ -74,6 +79,7 @@ class App extends React.Component {
         {this.state.route === "allUsers" ?
           <UserDisplay
             allUsers={this.state.users}
+            clearDisplayedUser={this.clearDisplayedUser}
             displayUser={this.state.displayUser}
             displayUserProfile={this.displayUserProfile}
             refreshUserList={this.refreshUserList}/>
