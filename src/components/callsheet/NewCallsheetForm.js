@@ -15,18 +15,25 @@ class NewCallsheetForm extends React.Component {
 
   composeCallsheet = (e) => {
     e.preventDefault();
-    // let allCalledArray = []
-    // let callsheetObject = {
-    //   date: this.state.date,
-    //   episode: this.state.episode,
-    //   day: this.state.day,
-    //   scriptDraft: this.state.scriptDraft,
-    //   generalCallTime: this.state.crewCallTime,
-    //   generalLocation: this.state.crewLocation,
-    //   nearestHospital: this.state.hospital,
-    //   allCalled: allCalledArray
-    // }
-    // this.props.createCallsheet(callsheetObject);
+    let callsheetObject = {
+      date: this.state.date,
+      episode: this.state.episode,
+      day: this.state.day,
+      scriptDraft: this.state.scriptDraft,
+      generalCallTime: this.state.crewCallTime,
+      generalLocation: this.state.crewLocation,
+      nearestHospital: this.state.hospital,
+      allCalled: this.state.allCalled
+    }
+    this.props.createCallsheet(callsheetObject);
+  }
+
+  confirmRecipients = (arr) => {
+    this.setState({
+      allCalled:arr
+    }, () => {
+      this.toggleAddRecipients();
+    })
   }
 
   newInput = (e) => {
@@ -61,7 +68,10 @@ class NewCallsheetForm extends React.Component {
     }
   }
 
-  toggleAddRecipients = () => {
+  toggleAddRecipients = (e) => {
+    if(e){
+      e.preventDefault()
+    }
     this.setState({addRecipients:!this.state.addRecipients})
   }
 
@@ -112,10 +122,16 @@ class NewCallsheetForm extends React.Component {
         <br/>
         <button onClick={this.toggleAddRecipients}>Add Recipients</button>
         <input type="submit" value="Submit Callsheet"/>
+        {this.state.allCalled[0] ? this.state.allCalled.map((user, index) => {
+          return <div key={index}>{user.user.name}</div>
+        }): <div>No one added yet</div>}
         {this.state.addRecipients ?
           <AddRecipients
             addRecipientsToAllCalled={this.addRecipientsToAllCalled}
-            allUsers={this.props.allUsers}/>
+            allUsers={this.props.allUsers}
+            confirmRecipients={this.confirmRecipients}
+            crewCallTime={this.state.crewCallTime?this.state.crewCallTime:''}
+            crewLocation={this.state.crewLocation?this.state.crewLocation:''}/>
           : null
         }
       </form>

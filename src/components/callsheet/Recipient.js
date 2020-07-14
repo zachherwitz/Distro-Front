@@ -2,14 +2,7 @@ import React from 'react'
 
 class Recipient extends React.Component {
   state = {
-    clicked:false,
     toggleSpecifics:false,
-  }
-
-  handleClick = () => {
-    this.setState({
-      clicked:!this.state.clicked
-    })
   }
 
   handleInput = (e) => {
@@ -26,12 +19,11 @@ class Recipient extends React.Component {
   submitSpecs = () => {
     let specCallTime = (this.state.callTime ? this.state.callTime : '');
     let specLocation = (this.state.location ? this.state.location : '');
-    let specId = this.props.user._id;
     this.setState({
       recipientObject: {
-        id: specId,
-        callTime: specCallTime,
-        location: specLocation
+        user: this.props.user,
+        specCallTime: specCallTime,
+        specLocation: specLocation
       }
     }, () => {
       this.props.addUser(this.state.recipientObject);
@@ -49,9 +41,7 @@ class Recipient extends React.Component {
     const { user } = this.props;
     return <div>
       <div style={{display: 'flex'}}>
-        <div
-          onClick={this.handleClick}
-          style={this.state.clicked ? {color:'green'} : {color:'black'}}>
+        <div>
           {user.name} - {user.department} - {user.title}
         </div>
         {this.state.toggleSpecifics ?
@@ -66,7 +56,7 @@ class Recipient extends React.Component {
               type="text"
               id="location"
               placeholder="specific location"/>
-            <button onClick={this.submitSpecs}>Submit Specs</button>
+            <button onClick={this.submitSpecs}>Add To Recipients</button>
           </div>
         : <button onClick={this.toggleSpecifics}>{this.state.toggleSpecifics?'-':'+'}</button>}
       </div>

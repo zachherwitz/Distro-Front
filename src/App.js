@@ -46,18 +46,14 @@ class App extends React.Component {
 
   // Create call sheet based on call sheet object in state
   createCallsheet = (callsheet) => {
-    axios.post('http://localhost:3000/callsheet', {
-      date: callsheet.date,
-      episode: callsheet.episode,
-      day: callsheet.day,
-      scriptDraft: callsheet.scriptDraft,
-      generalCallTime: callsheet.generalCallTime,
-      generalLocation: callsheet.generalLocation,
-      nearestHospital: callsheet.nearestHospital,
-      allCalled: callsheet.allCalled
-    }).then(
+    axios.post('http://localhost:3000/callsheet', callsheet).then(
       (response) => {
         this.setState({callsheet:response.data.createdCallsheet})
+        axios.get('http://localhost:3000/users').then((response) => {
+          this.setState({
+            users: response.data
+          })
+        })
     })
   }
 

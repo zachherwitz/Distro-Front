@@ -4,8 +4,26 @@ import Recipient from './Recipient'
 let allRecipientsArray = [];
 
 class AddRecipients extends React.Component {
+  state = {
+    recipients: []
+  }
+
   addUser = (obj) => {
-    console.log(obj);
+    if(obj.specCallTime === ''){
+      obj.specCallTime = this.props.crewCallTime
+    }
+    if(obj.specLocation === ''){
+      obj.specLocation = this.props.crewLocation
+    }
+    allRecipientsArray.push(obj)
+    this.setState({
+      recipients:allRecipientsArray
+    })
+  }
+
+  confirmRecipients = () => {
+    let recipients = this.state.recipients;
+    this.props.confirmRecipients(recipients);
   }
 
   render = () => {
@@ -16,7 +34,13 @@ class AddRecipients extends React.Component {
           <Recipient addUser={this.addUser} user={user}/>
         </div>
       })}
-      <button>Confirm Recipients</button>
+      <h1>CONFIRMED RECIPIENTS:</h1>
+      {this.state.recipients[0] ? this.state.recipients.map((user, index) => {
+        return <div key={index}>{user.user.name} -
+          Call Time: {user.specCallTime}
+          Location: {user.specLocation}</div>
+      }) : null}
+      <button onClick={this.confirmRecipients}>Confirm Recipients</button>
     </div>
   }
 }
