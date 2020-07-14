@@ -1,25 +1,32 @@
 import React from 'react';
-import AllUsers from './AllUsers'
+import AddRecipients from './AddRecipients'
 
 class NewCallsheetForm extends React.Component {
   state = {
+    addRecipients: false,
+    allCalled: []
+  }
 
+  addRecipientsToAllCalled = (arr) => {
+    this.setState({
+      allCalled: arr
+    })
   }
 
   composeCallsheet = (e) => {
     e.preventDefault();
-    let allCalledArray = this.state.allCalled.split(',')
-    let callsheetObject = {
-      date: this.state.date,
-      episode: this.state.episode,
-      day: this.state.day,
-      scriptDraft: this.state.scriptDraft,
-      generalCallTime: this.state.crewCallTime,
-      generalLocation: this.state.crewLocation,
-      nearestHospital: this.state.hospital,
-      allCalled: allCalledArray
-    }
-    this.props.createCallsheet(callsheetObject);
+    // let allCalledArray = []
+    // let callsheetObject = {
+    //   date: this.state.date,
+    //   episode: this.state.episode,
+    //   day: this.state.day,
+    //   scriptDraft: this.state.scriptDraft,
+    //   generalCallTime: this.state.crewCallTime,
+    //   generalLocation: this.state.crewLocation,
+    //   nearestHospital: this.state.hospital,
+    //   allCalled: allCalledArray
+    // }
+    // this.props.createCallsheet(callsheetObject);
   }
 
   newInput = (e) => {
@@ -52,6 +59,10 @@ class NewCallsheetForm extends React.Component {
       default:
         break;
     }
+  }
+
+  toggleAddRecipients = () => {
+    this.setState({addRecipients:!this.state.addRecipients})
   }
 
   render = () => {
@@ -99,17 +110,15 @@ class NewCallsheetForm extends React.Component {
           type="text"
           placeholder="nearest hopsital"/>
         <br/>
-        <input
-          onKeyUp={this.newInput}
-          id="allCalled"
-          type="text"
-          placeholder="allCalled"/>
-        <br/>
+        <button onClick={this.toggleAddRecipients}>Add Recipients</button>
         <input type="submit" value="Submit Callsheet"/>
+        {this.state.addRecipients ?
+          <AddRecipients
+            addRecipientsToAllCalled={this.addRecipientsToAllCalled}
+            allUsers={this.props.allUsers}/>
+          : null
+        }
       </form>
-      <AllUsers
-        allUsers={this.props.allUsers}
-        displayUserProfile={this.props.displayUserProfile}/>
     </div>
   }
 }

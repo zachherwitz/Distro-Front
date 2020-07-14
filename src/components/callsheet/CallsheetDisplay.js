@@ -9,9 +9,8 @@ class CallsheetDisplay extends React.Component {
     return <div>
       <h1>This is my Callsheet Display!</h1>
       <NewCallsheetForm
-        allUsers={this.props.allUsers}
         createCallsheet={this.props.createCallsheet}
-        displayUser={this.state.displayUser} />
+        allUsers={this.props.allUsers} />
     </div>
   }
 }

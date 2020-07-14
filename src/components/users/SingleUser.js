@@ -29,6 +29,7 @@ class SingleUser extends React.Component {
         <h4>REPORT TO {this.props.displayUser.callsheet.location}</h4>
         <ul>DEV:: Crew Information:
           <li>Department: {this.props.displayUser.department}</li>
+          <li>Title: {this.props.displayUser.title}</li>
           <li>Email: {this.props.displayUser.email}</li>
           <li>Phone: {this.props.displayUser.phone}</li>
           <ul>

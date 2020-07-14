@@ -13,6 +13,7 @@ class NewUserForm extends React.Component {
       },
       name: this.state.name,
       department: this.state.department,
+      title: this.state.title,
       email: this.state.email,
       phone: this.state.phone,
       role: 'user'
@@ -21,6 +22,7 @@ class NewUserForm extends React.Component {
       this.setState({newUserCreated: true})
       this.newName.value = ''
       this.newDepartment.value = ''
+      this.newTitle.value = ''
       this.newEmail.value = ''
       this.newPhone.value = ''
       setTimeout(() => {
@@ -28,10 +30,11 @@ class NewUserForm extends React.Component {
           newUserCreated: false,
           name: '',
           department: '',
+          title: '',
           email: '',
           phone: ''
         })
-      }, 3000)
+      }, 1500)
     })
   }
 
@@ -71,6 +74,15 @@ class NewUserForm extends React.Component {
         <input
           autoComplete="off"
           required
+          ref={input => this.newTitle = input}
+          onKeyUp={this.handleInput}
+          id="title"
+          type="text"
+          placeholder="title"/>
+        <br/>
+        <input
+          autoComplete="off"
+          required
           ref={input => this.newPhone = input}
           onKeyUp={this.handleInput}
           id="phone"
@@ -88,7 +100,7 @@ class NewUserForm extends React.Component {
         <br/>
         <input type="Submit" readOnly value="Create New User"/>
       </form>
-      {this.state.newUserCreated?<h3>{this.state.name} added to project!</h3> : null}
+      {this.state.newUserCreated?<h3>New crew member added to project!</h3> : null}
     </div>
   }
 }

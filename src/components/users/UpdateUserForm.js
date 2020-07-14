@@ -23,6 +23,7 @@ class UpdateUserForm extends React.Component {
     let updatedUserObject = {
       name: this.state.name,
       department: this.state.department,
+      title: this.state.title,
       phone: this.state.phone,
       email: this.state.email
     }
@@ -50,6 +51,14 @@ class UpdateUserForm extends React.Component {
         id="department"
         type="text"
         defaultValue={this.props.displayUser.department}/>
+      <br/>
+      <input
+        autoComplete="off"
+        ref={input => this.updatedTitle = input}
+        onKeyUp={this.handleInput}
+        id="title"
+        type="text"
+        defaultValue={this.props.displayUser.title}/>
       <br/>
       <input
         autoComplete="off"
