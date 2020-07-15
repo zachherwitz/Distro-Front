@@ -98,6 +98,15 @@ class NewUserForm extends React.Component {
           type="email"
           placeholder="email"/>
         <br/>
+        <input
+          autoComplete="off"
+          required
+          ref={input => this.newPassword = input}
+          onKeyUp={this.handleInput}
+          id="password"
+          type="password"
+          placeholder="password"/>
+        <br/>
         <input type="Submit" readOnly value="Create New User"/>
       </form>
       {this.state.newUserCreated?<h3>New crew member added to project!</h3> : null}
