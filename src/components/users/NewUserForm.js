@@ -16,7 +16,8 @@ class NewUserForm extends React.Component {
       title: this.state.title,
       email: this.state.email,
       phone: this.state.phone,
-      role: 'user'
+      role: 'user',
+      password: this.state.password
     }).then((response) => {
       this.props.refreshUserList()
       this.setState({newUserCreated: true})
@@ -25,6 +26,7 @@ class NewUserForm extends React.Component {
       this.newTitle.value = ''
       this.newEmail.value = ''
       this.newPhone.value = ''
+      this.newPassword.value = ''
       setTimeout(() => {
         this.setState({
           newUserCreated: false,
@@ -32,7 +34,8 @@ class NewUserForm extends React.Component {
           department: '',
           title: '',
           email: '',
-          phone: ''
+          phone: '',
+          password: ''
         })
       }, 1500)
     })

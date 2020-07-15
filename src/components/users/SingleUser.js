@@ -9,7 +9,7 @@ class SingleUser extends React.Component {
 
   deleteUser = () => {
     let userId = this.props.displayUser._id;
-    axios.delete('https://distro-app-api.herokuapp.com/users' + userId).then((response) => {
+    axios.delete('https://distro-app-api.herokuapp.com/users/' + userId).then((response) => {
       this.props.refreshUserList()
       this.props.clearDisplayedUser()
       console.log(response);
