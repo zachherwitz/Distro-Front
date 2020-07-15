@@ -31,12 +31,12 @@ class App extends React.Component {
 
   // Gets and stores all the data as soon as the app is mounted
   componentDidMount = () => {
-    axios.get('http://localhost:3000/users').then((response) => {
+    axios.get('https://distro-app-api.herokuapp.com/users').then((response) => {
       this.setState({
         users: response.data
       })
     })
-    axios.get('http://localhost:3000/callsheet').then((response) => {
+    axios.get('https://distro-app-api.herokuapp.com/callsheet').then((response) => {
       let currentCallsheetIndex = response.data.length - 1;
       this.setState({
         callsheet: response.data[currentCallsheetIndex]
@@ -46,10 +46,10 @@ class App extends React.Component {
 
   // Create call sheet based on call sheet object in state
   createCallsheet = (callsheet) => {
-    axios.post('http://localhost:3000/callsheet', callsheet).then(
+    axios.post('https://distro-app-api.herokuapp.com/callsheet', callsheet).then(
       (response) => {
         this.setState({callsheet:response.data.createdCallsheet})
-        axios.get('http://localhost:3000/users').then((response) => {
+        axios.get('https://distro-app-api.herokuapp.com/users').then((response) => {
           this.setState({
             users: response.data
           })
@@ -73,7 +73,7 @@ class App extends React.Component {
   }
 
   refreshUserList = () => {
-    axios.get('http://localhost:3000/users').then((response) => {
+    axios.get('https://distro-app-api.herokuapp.com/users').then((response) => {
       this.setState({
         users: response.data
       })

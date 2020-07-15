@@ -6,7 +6,7 @@ class NewUserForm extends React.Component {
 
   createNewUser = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3000/users', {
+    axios.post('https://distro-app-api.herokuapp.com/users', {
       callsheet: {
         callTime: "",
         location: "",
