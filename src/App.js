@@ -13,7 +13,8 @@ class App extends React.Component {
   state = {
     users: [],
     displayUser: '',
-    route: ''
+    route: '',
+    isLoggedIn: false
   }
 
   // Makeshift Route Changing until I can figure out router
@@ -80,12 +81,51 @@ class App extends React.Component {
     })
   }
 
+  fakeLogin = (e) => {
+    e.preventDefault()
+    let credentials = {
+      login: this.loginInput.value,
+      password: this.passwordInput.value
+    }
+    axios.get('https://distro-app-api.herokuapp.com/users/user/' + credentials.login, {params: credentials.password}).then((response) => {
+      console.log(response);
+      if (response.data[0]) {
+        this.setState({
+          isLoggedIn:!this.state.isLoggedIn,
+          role: response.data[0].role
+        })
+      } else {
+        this.setState({incorrectLogin:true})
+        setTimeout(() => {
+          this.setState({incorrectLogin:false})
+        }, 1500)
+      }
+    }, (error) => {
+      this.setState({incorrectLogin:true})
+      setTimeout(() => {
+        this.setState({incorrectLogin:false})
+      }, 1500)
+    })
+  }
+
   render = () => {
     // DESTRUCTURING :: displayUser now equals this.state.displayUser //
     return (
       <div>
-        <Navigation changeRoute={this.changeRoute}/>
-        {this.state.route === "allUsers" ?
+        <form onSubmit={this.fakeLogin}>
+          <input
+            type="text"
+            placeholder="email"
+            ref={input => this.loginInput = input}/>
+          <input
+            type="text"
+            placeholder="password"
+            ref={input => this.passwordInput = input}/>
+          <input type="submit" value={this.state.isLoggedIn?"Log Out":"Log In"}/>
+        </form>
+        {this.state.incorrectLogin ? <p>Incorrect Login</p> : null}
+        {this.state.isLoggedIn && this.state.role === "user"? <Navigation changeRoute={this.changeRoute}/> : null}
+        {this.state.route === "allUsers" && this.state.isLoggedIn ?
           <UserDisplay
             allUsers={this.state.users}
             clearDisplayedUser={this.clearDisplayedUser}
@@ -94,7 +134,7 @@ class App extends React.Component {
             refreshSingleUser={this.refreshSingleUser}
             refreshUserList={this.refreshUserList}/>
             : null}
-        {this.state.route === "createCallsheet" ?
+        {this.state.route === "createCallsheet" && this.state.isLoggedIn ?
           <CallsheetDisplay
             allUsers={this.state.users}
             callsheet={this.state.callsheet}
