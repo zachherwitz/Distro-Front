@@ -1,5 +1,6 @@
 import React from 'react';
 import CallsheetDisplay from './components/callsheet/CallsheetDisplay';
+import DistroDisplay from './components/distro/DistroDisplay';
 import LogInDisplay from './components/LogInDisplay';
 import NavBar from './components/NavBar'
 import SingleUserDisplay from './components/users/SingleUserDisplay';
@@ -170,6 +171,9 @@ class App extends React.Component {
             allUsers={this.state.users}
             callsheet={this.state.callsheet}
             createCallsheet={this.createCallsheet}/>
+            : null}
+        {this.state.route === "distro" && this.state.isLoggedIn ?
+          <DistroDisplay/>
             : null}
       </div>
     )

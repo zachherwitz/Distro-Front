@@ -17,6 +17,11 @@ class NavBar extends React.Component {
               onClick={this.props.changeRoute}>
               Callseet
             </button>
+            <button
+              route="distro"
+              onClick={this.props.changeRoute}>
+              Distro
+            </button>
           </div>
           : null
         }
