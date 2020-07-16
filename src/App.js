@@ -83,25 +83,31 @@ class App extends React.Component {
 
   fakeLogin = (e) => {
     e.preventDefault()
-    axios.get('https://distro-app-api.herokuapp.com/users/user/' + this.loginInput.value, {params: {password:this.passwordInput.value}}).then((response) => {
+    axios.post('https://distro-app-api.herokuapp.com/admin/session', {
+      email:this.loginInput.value,
+      password:this.passwordInput.value
+    }).then((response) => {
       console.log(response);
-      if (response.data[0]) {
-        this.setState({
-          isLoggedIn:!this.state.isLoggedIn,
-          role: response.data[0].role
-        })
-      } else {
-        this.setState({incorrectLogin:true})
-        setTimeout(() => {
-          this.setState({incorrectLogin:false})
-        }, 1500)
-      }
-    }, (error) => {
-      this.setState({incorrectLogin:true})
-      setTimeout(() => {
-        this.setState({incorrectLogin:false})
-      }, 1500)
     })
+    // axios.get('https://distro-app-api.herokuapp.com/users/user/' + this.loginInput.value, {params: {password:this.passwordInput.value}}).then((response) => {
+    //   console.log(response);
+    //   if (response.data[0]) {
+    //     this.setState({
+    //       isLoggedIn:!this.state.isLoggedIn,
+    //       role: response.data[0].role
+    //     })
+    //   } else {
+    //     this.setState({incorrectLogin:true})
+    //     setTimeout(() => {
+    //       this.setState({incorrectLogin:false})
+    //     }, 1500)
+    //   }
+    // }, (error) => {
+    //   this.setState({incorrectLogin:true})
+    //   setTimeout(() => {
+    //     this.setState({incorrectLogin:false})
+    //   }, 1500)
+    // })
   }
 
   render = () => {
