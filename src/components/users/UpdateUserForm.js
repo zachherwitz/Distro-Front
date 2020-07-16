@@ -25,7 +25,8 @@ class UpdateUserForm extends React.Component {
       department: this.state.department,
       title: this.state.title,
       phone: this.state.phone,
-      email: this.state.email
+      email: this.state.email,
+      role: this.state.role
     }
     axios.put('https://distro-app-api.herokuapp.com/users/' + userId, updatedUserObject).then((response) => {
       let updatedDisplayUser = response.data.updated;
@@ -75,6 +76,14 @@ class UpdateUserForm extends React.Component {
         id="email"
         type="email"
         defaultValue={this.props.displayUser.email}/>
+      <br/>
+      <input
+        autoComplete="off"
+        ref={input => this.updatedRole = input}
+        onKeyUp={this.handleInput}
+        id="role"
+        type="text"
+        defaultValue={this.props.displayUser.role}/>
       <br/>
       <input type="Submit" readOnly value="Update User"/>
     </form>

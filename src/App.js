@@ -1,13 +1,12 @@
 import React from 'react';
 import CallsheetDisplay from './components/callsheet/CallsheetDisplay';
-import Navigation from './components/Navigation'
+import LogInDisplay from './components/LogInDisplay';
+import NavBar from './components/NavBar'
+import SingleUserDisplay from './components/users/SingleUserDisplay';
+import SignUpDisplay from './components/SignUpDisplay';
 import UserDisplay from './components/users/UserDisplay';
 
-
 import axios from 'axios';
-
-
-// TEST <UserTestForm /> to test the users
 
 class App extends React.Component {
   state = {
@@ -32,11 +31,6 @@ class App extends React.Component {
     this.setState({displayUser:''})
   }
 
-  // Gets and stores all the data as soon as the app is mounted
-  componentDidMount = () => {
-
-  }
-
   // Create call sheet based on call sheet object in state
   createCallsheet = (callsheet) => {
     axios.post('https://distro-app-api.herokuapp.com/callsheet', callsheet).then(
@@ -58,6 +52,43 @@ class App extends React.Component {
     })
   }
 
+  login = (obj) => {
+    // Post Request to API SESSION (NOT WORKING YET)
+    axios.post('https://distro-app-api.herokuapp.com/session', obj).then((response) => {
+      if(obj.email === response.data.email){
+        this.setState({
+          isLoggedIn: true,
+          role: response.data.role
+        }, () => {
+          if(this.state.role === 'user') {
+            // IF ROLE IS USER, SEND BACK JUST THE USER'S INFO
+            axios.get('https://distro-app-api.herokuapp.com/users/user/' + obj.email).then(
+              (response) => {
+                this.setState({
+                  users: response.data
+                })
+            })
+          } else if(this.state.role === 'admin') {
+            // IF ROLE IS ADMIN, SEND BACK ALL USERS' INFO
+            axios.get('https://distro-app-api.herokuapp.com/users').then(
+              (response) => {
+                this.setState({
+                  users: response.data
+                }
+              )
+            })
+          }}
+        )
+      }
+      this.toggleLogIn()
+    })
+  }
+
+  // Cheap and easy logout by refreshing the page
+  logout = () => {
+    window.location.reload();
+  }
+
   refreshSingleUser = (obj) => {
     let updatedUserToDisplay = obj
     this.setState({
@@ -73,43 +104,14 @@ class App extends React.Component {
     })
   }
 
-  authLogin = (e) => {
-    e.preventDefault()
-    let credentials = {
-      email:this.loginInput.value,
-      password: this.passwordInput.value
-    }
-    axios.post('https://distro-app-api.herokuapp.com/session', credentials).then((response) => {
-      if(credentials.email === response.data.email){
-        this.setState({
-          isLoggedIn: true,
-          role: response.data.role
-        }, () => {
-          axios.get('https://distro-app-api.herokuapp.com/users').then(
-            (response) => {
-              if (this.state.role === 'user') {
-                this.setState({
-                  users: 'user'
-                })
-              } else {
-                this.setState({
-                  users: response.data
-                })
-              }
-            })
-          }
-        )
-      }
-    })
-  }
 
-  signup = (e) => {
-    e.preventDefault()
+  // Passes credentials to axios Post route, but does not log user in
+  signup = (obj) => {
     axios.post('https://distro-app-api.herokuapp.com/users', {
-      name: this.signupNameInput.value,
-      email: this.signupEmailInput.value,
+      name: obj.name,
+      email: obj.email,
       role: 'admin',
-      password: this.signupPasswordInput.value,
+      password: obj.password,
       callsheet: {
         callTime: '',
         location: '',
@@ -119,10 +121,12 @@ class App extends React.Component {
       projectId: '',
       title: '',
     }).then((response) => {
-      console.log(response);
+      console.log('new user created');
+      this.toggleSignUp()
     })
   }
 
+  // Opens Login Form
   toggleLogIn = () => {
     this.setState({
       loginShow:!this.state.loginShow,
@@ -130,6 +134,7 @@ class App extends React.Component {
     })
   }
 
+  // Opens Signup Form
   toggleSignUp = () => {
     this.setState({
       signupShow:!this.state.signupShow,
@@ -137,70 +142,20 @@ class App extends React.Component {
     })
   }
 
-  logout = () => {
-    this.setState({
-      isLoggedIn:false,
-      role: '',
-      users: ''
-    })
-  }
-
-  testsession = () => {
-    axios.get('https://distro-app-api.herokuapp.com/session').then(
-      (response) => {
-        console.log(response);
-    })
-  }
-
-  deletesession = () => {
-    axios.delete('https://distro-app-api.herokuapp.com/session').then(
-      (response) => {
-        console.log(response);
-    })
-  }
-
-
   render = () => {
-    // DESTRUCTURING :: displayUser now equals this.state.displayUser //
     return (
-      <div>
-        <nav style={{display:'flex', justifyContent:'space-around'}}>
-          <button onClick={this.toggleSignUp}>SignUp</button>
-          <button onClick={this.toggleLogIn}>LogIn</button>
-          <button onClick={this.logout}>Logout</button>
-          <button onClick={this.testsession}>testsession</button>
-          <button onClick={this.deletesession}>deletesessions</button>
-        </nav>
-        {this.state.loginShow ?
-          <form onSubmit={this.authLogin}>
-            <input
-              type="text"
-              placeholder="email"
-              ref={input => this.loginInput = input}/>
-            <input
-              type="text"
-              placeholder="password"
-              ref={input => this.passwordInput = input}/>
-            <input type="submit" value="Log In"/>
-          </form> : null}
-        {this.state.signupShow ?
-          <form onSubmit={this.signup}>
-            <input
-              type="text"
-              placeholder="email"
-              ref={input => this.signupEmailInput = input}/>
-            <input
-              type="text"
-              placeholder="password"
-              ref={input => this.signupPasswordInput = input}/>
-            <input
-              type="text"
-              placeholder="name"
-              ref={input => this.signupNameInput = input}/>
-            <input type="submit" value="Sign Up"/>
-          </form> : null}
-        {this.state.isLoggedIn && this.state.role === "admin"? <Navigation changeRoute={this.changeRoute}/> : null}
-        {this.state.isLoggedIn && this.state.role === "user"? <h1>USER VIEW</h1> : null}
+      <div className={'app-container'}>
+        <NavBar
+          changeRoute={this.changeRoute}
+          isLoggedIn={this.state.isLoggedIn}
+          logout={this.logout}
+          role={this.state.role}
+          toggleSignUp={this.toggleSignUp}
+          toggleLogIn={this.toggleLogIn}
+        />
+        {this.state.loginShow ? <LogInDisplay login={this.login}/> : null}
+        {this.state.signupShow ? <SignUpDisplay signup={this.signup}/> : null}
+        {this.state.isLoggedIn && this.state.users[0] && this.state.role === "user"? <SingleUserDisplay user={this.state.users[0]}/> : null}
         {this.state.route === "allUsers" && this.state.isLoggedIn ?
           <UserDisplay
             allUsers={this.state.users}

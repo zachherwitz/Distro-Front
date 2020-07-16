@@ -32,6 +32,7 @@ class SingleUser extends React.Component {
           <li>Title: {this.props.displayUser.title}</li>
           <li>Email: {this.props.displayUser.email}</li>
           <li>Phone: {this.props.displayUser.phone}</li>
+          <li>Role: {this.props.displayUser.role}</li>
           <ul>
             {this.props.displayUser.distros.map((distro) => {
               return <li>{distro}</li>
