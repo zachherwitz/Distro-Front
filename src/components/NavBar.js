@@ -10,12 +10,12 @@ class NavBar extends React.Component {
             <button
               route="allUsers"
               onClick={this.props.changeRoute}>
-              Callsheet
+              Users
             </button>
             <button
               route="createCallsheet"
               onClick={this.props.changeRoute}>
-              Users
+              Callseet
             </button>
           </div>
           : null
