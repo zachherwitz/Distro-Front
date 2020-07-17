@@ -40,8 +40,14 @@ class DistroDisplay extends React.Component{
         })
         break;
       case 'distro':
-      //TODO:: IMPLEMENT THIS!!!!
         console.log(`you searched for the distro ${query}`);
+        axios.get('https://distro-app-api.herokuapp.com/users/findbydistro/' + query).then((response) => {
+          console.log(response);
+          this.setState({
+            returnedUsers: response.data
+          })
+        })
+        break;
       default:
         break;
     }
