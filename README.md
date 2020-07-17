@@ -1,3 +1,12 @@
+IN SERVER.JS
+// IMPORTANT // IMPORTANT // IMPORTANT // IMPORTANT // IMPORTANT //
+//   CHANGE to origin:'https://distro-app.herokuapp.com' WHEN LIVE  //
+// IMPORTANT // IMPORTANT // IMPORTANT // IMPORTANT // IMPORTANT //
+
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

@@ -1,13 +1,31 @@
 import React from 'react';
 import CallsheetDisplay from './components/callsheet/CallsheetDisplay';
 import DistroDisplay from './components/distro/DistroDisplay';
+import Footer from './components/Footer';
 import LogInDisplay from './components/LogInDisplay';
 import NavBar from './components/NavBar'
 import SingleUserDisplay from './components/users/SingleUserDisplay';
 import SignUpDisplay from './components/SignUpDisplay';
+import SplashScreen from './components/SplashScreen';
 import UserDisplay from './components/users/UserDisplay';
 
 import axios from 'axios';
+
+let colorPairs = [
+  {
+    navColor: '#89ABE3FF',
+    textColor: '#0063B2FF',
+  },
+  {
+    navColor: '#F68A4C',
+    textColor: '#FEC64D',
+  },
+  {
+    navColor: '#F5D10D',
+    textColor: '#181818',
+  },
+]
+
 
 class App extends React.Component {
   state = {
@@ -16,7 +34,7 @@ class App extends React.Component {
     route: '',
     isLoggedIn: false,
     loginShow: false,
-    signupShow: false
+    signupShow: false,
   }
 
   // Makeshift Route Changing until I can figure out router
@@ -45,7 +63,17 @@ class App extends React.Component {
     })
   }
 
+  // This is me venting after a long night of session work ><
+  colorRandomizer = () => {
+    let combo = colorPairs[Math.floor(Math.random() * colorPairs.length)]
+    this.setState({
+      navColor:combo.navColor,
+      textColor:combo.textColor
+    })
+  }
+
   componentDidMount = () => {
+    this.colorRandomizer()
     axios.get('https://distro-app-api.herokuapp.com/session', {withCredentials:true}).then((response) => {
       if(response.data.role === "admin") {
         axios.get('https://distro-app-api.herokuapp.com/users').then(
@@ -120,8 +148,8 @@ class App extends React.Component {
           users: ''
         })
         console.log(response);
+        window.location.reload();
     })
-    // window.location.reload();
   }
 
   refreshSingleUser = (obj) => {
@@ -187,6 +215,8 @@ class App extends React.Component {
           role={this.state.role}
           toggleSignUp={this.toggleSignUp}
           toggleLogIn={this.toggleLogIn}
+          navColor={this.state.navColor}
+          textColor={this.state.textColor}
         />
         {this.state.loginShow ? <LogInDisplay login={this.login}/> : null}
         {this.state.signupShow ? <SignUpDisplay signup={this.signup}/> : null}
@@ -209,6 +239,8 @@ class App extends React.Component {
         {this.state.route === "distro" && this.state.isLoggedIn ?
           <DistroDisplay/>
             : null}
+        {!this.state.isLoggedIn && !this.state.loginShow && !this.state.signupShow ? <SplashScreen textColor={this.state.textColor}/> : null}
+        <Footer navColor={this.state.navColor}/>
       </div>
     )
   }

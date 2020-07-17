@@ -21,7 +21,7 @@ class SingleUser extends React.Component {
   }
 
   render = () => {
-    return <div style={{padding: '20px', border: '2px dotted grey', background: 'thistle'}}>
+    return <div>
       <h1>This is my SINGLEUSER component</h1>
       <h2>{this.props.displayUser.name}</h2>
       <div>

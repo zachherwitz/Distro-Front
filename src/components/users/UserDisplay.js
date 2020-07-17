@@ -7,7 +7,7 @@ class UserDisplay extends React.Component {
   render = () => {
     return <div>
       <NewUserForm refreshUserList={this.props.refreshUserList}/>
-      <div style={{display: "flex"}}>
+      <div>
         <AllUsers
           allUsers={this.props.allUsers}
           displayUserProfile={this.props.displayUserProfile}/>

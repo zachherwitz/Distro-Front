@@ -2,7 +2,8 @@ import React from 'react';
 
 class NavBar extends React.Component {
   render = () => {
-    return <nav>
+    return <nav style={{background:this.props.navColor}}>
+      <div className="nav-logo" style={{color:this.props.textColor}}>d<span>|</span>STRO</div>
       {this.props.isLoggedIn ?
         <div className="nav-buttons">
         {this.props.role === 'admin' ?
@@ -15,7 +16,7 @@ class NavBar extends React.Component {
             <button
               route="createCallsheet"
               onClick={this.props.changeRoute}>
-              Callseet
+              Callsheet
             </button>
             <button
               route="distro"

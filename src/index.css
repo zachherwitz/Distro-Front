@@ -1,16 +1,35 @@
-body {
+html, body, #root, .app-container {
   margin: 0;
+  height: 100%;
 }
 
+.app-container {
+  display: grid;
+  grid-template-rows: 10% 1fr 10%;
+}
+
+/* NAV */
+
 nav {
-  height: 8rem;
-  background: teal;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 50px 0px;
+  display: flex;
+  align-items: center;
+}
+
+.nav-logo {
+  font-size: 3rem;
+  margin-left: 3rem;
+}
+
+.nav-logo span {
+  font-size: 4rem;
 }
 
 .nav-buttons {
   display: flex;
+  width: 100%;
   justify-content: space-around;
-  padding-top: 2rem;
 }
 
 nav button {
@@ -18,4 +37,46 @@ nav button {
   font-size: 2rem;
   background: none;
   border: none;
+  padding: 0;
+}
+
+/* SPLASH PAGE */
+
+.splash-page {
+  display: flex;
+  justify-content: space-between;
+  padding: 5% 5% 0 5%;
+}
+
+.splash-text h1 {
+  font-size: 4rem;
+  margin: 0;
+  padding: 0;
+}
+
+.splash-pipe {
+  font-size: 5rem;
+}
+
+.splash-img-container {
+  display: flex;
+  justify-content: center
+}
+
+.splash-img {
+  width: 70%;
+  margin-left: 1rem;
+}
+
+/* FOOTER */
+footer {
+  color: white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
+              0px -4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 50px 0px 0px 0px;
+}
+
+footer > h1 {
+  text-align: right;
+  margin-right: 3rem;
 }
