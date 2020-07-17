@@ -54,10 +54,6 @@ nav button {
   padding: 0;
 }
 
-.splash-pipe {
-  font-size: 5rem;
-}
-
 .splash-img-container {
   display: flex;
   justify-content: center

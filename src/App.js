@@ -24,6 +24,22 @@ let colorPairs = [
     navColor: '#F5D10D',
     textColor: '#181818',
   },
+  {
+    navColor: '#2A3132',
+    textColor: '#336B87',
+  },
+  {
+    navColor: '#FCE77D',
+    textColor: '#F96167',
+  },
+  {
+    navColor: '#3D155F',
+    textColor: '#DF678C',
+  },
+  {
+    navColor: '#358597',
+    textColor: '#F4A896',
+  }
 ]
 
 
@@ -173,16 +189,17 @@ class App extends React.Component {
     axios.post('https://distro-app-api.herokuapp.com/users', {
       name: obj.name,
       email: obj.email,
-      role: 'admin',
+      role: obj.role || 'admin',
       password: obj.password,
       callsheet: {
         callTime: '',
         location: '',
       },
-      department: '',
-      phone: '',
+      department: obj.department,
+      phone: obj.phone,
       projectId: '',
-      title: '',
+      title: obj.title,
+      distros: obj.distros
     }).then((response) => {
       console.log('new user created');
       this.toggleSignUp()
@@ -221,6 +238,7 @@ class App extends React.Component {
         {this.state.loginShow ? <LogInDisplay login={this.login}/> : null}
         {this.state.signupShow ? <SignUpDisplay signup={this.signup}/> : null}
         {this.state.isLoggedIn && this.state.users[0] && this.state.role === "user"? <SingleUserDisplay user={this.state.users[0]}/> : null}
+        {this.state.route === "" && this.state.isLoggedIn ? <div></div> : null}
         {this.state.route === "allUsers" && this.state.isLoggedIn ?
           <UserDisplay
             allUsers={this.state.users}

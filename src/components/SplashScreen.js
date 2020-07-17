@@ -7,10 +7,10 @@ class SplashScreen extends React.Component {
     className="splash-page">
     <div className="splash-text">
       <h1>contacts,</h1>
-      <h1>contact<span className="splash-pipe">|</span>ess</h1>
+      <h1>contactless</h1>
     </div>
     <div className="splash-img-container">
-      <img src={img} className="splash-img"/>
+      <img src={img} alt="" className="splash-img"/>
     </div>
     </div>
   }
