@@ -145,7 +145,10 @@ class App extends React.Component {
   }
 
   testsession = () => {
-    axios.get('https://distro-app-api.herokuapp.com/session')
+    axios.get('https://distro-app-api.herokuapp.com/session', {withCredentials:true}).then(
+      (response) => {
+        console.log(response);
+    })
   }
 
   render = () => {
