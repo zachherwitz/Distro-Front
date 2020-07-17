@@ -55,6 +55,7 @@ class App extends React.Component {
 
   login = (obj) => {
     // Post Request to API SESSION (NOT WORKING YET)
+    console.log(obj);
     axios.post('https://distro-app-api.herokuapp.com/session', obj).then((response) => {
       if(obj.email === response.data.email){
         this.setState({
