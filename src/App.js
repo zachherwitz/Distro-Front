@@ -45,6 +45,31 @@ class App extends React.Component {
     })
   }
 
+  componentDidMount = () => {
+    axios.get('https://distro-app-api.herokuapp.com/session', {withCredentials:true}).then((response) => {
+      if(response.data.role === "admin") {
+        axios.get('https://distro-app-api.herokuapp.com/users').then(
+          (response) => {
+            this.setState({
+              isLoggedIn:true,
+              users: response.data,
+              role: 'admin'
+            }
+          )
+        })
+      } else if(response.data.role === "user") {
+        axios.get('https://distro-app-api.herokuapp.com/users/user/' + response.data.email).then(
+          (response) => {
+            this.setState({
+              isLoggedIn:true,
+              users: response.data,
+              role: 'user'
+            })
+        })
+      }
+    })
+  }
+
   // Display profile information of user on click
   displayUserProfile = (e) => {
     let userToDisplay = this.state.users[e.target.id]
@@ -56,7 +81,7 @@ class App extends React.Component {
   login = (obj) => {
     // Post Request to API SESSION (NOT WORKING YET)
     // console.log(obj);
-    axios.post('https://distro-app-api.herokuapp.com/session', obj).then((response) => {
+    axios.post('https://distro-app-api.herokuapp.com/session', obj, {withCredentials:true}).then((response) => {
       if(obj.email === response.data.email){
         this.setState({
           isLoggedIn: true,
@@ -86,9 +111,17 @@ class App extends React.Component {
     })
   }
 
-  // Cheap and easy logout by refreshing the page
   logout = () => {
-    window.location.reload();
+    axios.delete('https://distro-app-api.herokuapp.com/session', {withCredentials:true}).then(
+      (response) => {
+        this.setState({
+          isLoggedIn:false,
+          role: '',
+          users: ''
+        })
+        console.log(response);
+    })
+    // window.location.reload();
   }
 
   refreshSingleUser = (obj) => {
@@ -144,17 +177,9 @@ class App extends React.Component {
     })
   }
 
-  testsession = () => {
-    axios.get('https://distro-app-api.herokuapp.com/session', {withCredentials:true}).then(
-      (response) => {
-        console.log(response);
-    })
-  }
-
   render = () => {
     return (
       <div className={'app-container'}>
-        <button onClick={this.testsession}>test session</button>
         <NavBar
           changeRoute={this.changeRoute}
           isLoggedIn={this.state.isLoggedIn}
