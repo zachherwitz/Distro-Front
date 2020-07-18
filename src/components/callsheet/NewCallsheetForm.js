@@ -1,5 +1,10 @@
 import React from 'react';
 import AddRecipients from './AddRecipients'
+import Modal from "react-bootstrap/Modal";
+import ModalBody from "react-bootstrap/ModalBody";
+import ModalHeader from "react-bootstrap/ModalHeader";
+import ModalFooter from "react-bootstrap/ModalFooter";
+import ModalTitle from "react-bootstrap/ModalTitle";
 
 class NewCallsheetForm extends React.Component {
   state = {
@@ -126,12 +131,19 @@ class NewCallsheetForm extends React.Component {
           return <div key={index}>{user.user.name}</div>
         }): <div>No one added yet</div>}
         {this.state.addRecipients ?
-          <AddRecipients
-            addRecipientsToAllCalled={this.addRecipientsToAllCalled}
-            allUsers={this.props.allUsers}
-            confirmRecipients={this.confirmRecipients}
-            crewCallTime={this.state.crewCallTime?this.state.crewCallTime:''}
-            crewLocation={this.state.crewLocation?this.state.crewLocation:''}/>
+          <Modal show={this.state.addRecipients} onHide={this.toggleAddRecipients}>
+            <ModalHeader>
+              <ModalTitle>Modal</ModalTitle>
+            </ModalHeader>
+            <ModalBody>
+              <AddRecipients
+                addRecipientsToAllCalled={this.addRecipientsToAllCalled}
+                allUsers={this.props.allUsers}
+                confirmRecipients={this.confirmRecipients}
+                crewCallTime={this.state.crewCallTime?this.state.crewCallTime:''}
+                crewLocation={this.state.crewLocation?this.state.crewLocation:''}/>
+            </ModalBody>
+          </Modal>
           : null
         }
       </form>

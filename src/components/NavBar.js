@@ -1,4 +1,6 @@
 import React from 'react';
+import LogInDisplay from './LogInDisplay';
+
 
 class NavBar extends React.Component {
   render = () => {
@@ -7,31 +9,31 @@ class NavBar extends React.Component {
       {this.props.isLoggedIn ?
         <div className="nav-buttons">
         {this.props.role === 'admin' ?
-          <div>
-            <button
+          <React.Fragment>
+            <div
               route="allUsers"
               onClick={this.props.changeRoute}>
               Users
-            </button>
-            <button
+            </div>
+            <div
               route="createCallsheet"
               onClick={this.props.changeRoute}>
               Callsheet
-            </button>
-            <button
+            </div>
+            <div
               route="distro"
               onClick={this.props.changeRoute}>
               Distro
-            </button>
-          </div>
+            </div>
+          </React.Fragment>
           : null
         }
-          <button onClick={this.props.logout}>Logout</button>
+          <div onClick={this.props.logout}>Logout</div>
         </div>
         :
         <div className="nav-buttons">
-          <button onClick={this.props.toggleSignUp}>SignUp</button>
-          <button onClick={this.props.toggleLogIn}>LogIn</button>
+          <div onClick={this.props.toggleSignUp}>SignUp</div>
+          <LogInDisplay login={this.props.login}/>
         </div>
       }
     </nav>

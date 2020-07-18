@@ -2,44 +2,50 @@ import React from 'react';
 import CallsheetDisplay from './components/callsheet/CallsheetDisplay';
 import DistroDisplay from './components/distro/DistroDisplay';
 import Footer from './components/Footer';
-import LogInDisplay from './components/LogInDisplay';
+import Modal from "react-bootstrap/Modal";
+import ModalBody from "react-bootstrap/ModalBody";
+import ModalHeader from "react-bootstrap/ModalHeader";
+import ModalFooter from "react-bootstrap/ModalFooter";
+import ModalTitle from "react-bootstrap/ModalTitle";
 import NavBar from './components/NavBar'
 import SingleUserDisplay from './components/users/SingleUserDisplay';
 import SignUpDisplay from './components/SignUpDisplay';
 import SplashScreen from './components/SplashScreen';
 import UserDisplay from './components/users/UserDisplay';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 import axios from 'axios';
 
 let colorPairs = [
-  {
-    navColor: '#89ABE3FF',
-    textColor: '#0063B2FF',
-  },
-  {
-    navColor: '#F68A4C',
-    textColor: '#FEC64D',
-  },
+  // {
+  //   navColor: '#89ABE3FF',
+  //   textColor: '#0063B2FF',
+  // },
+  // {
+  //   navColor: '#F68A4C',
+  //   textColor: '#FEC64D',
+  // },
   {
     navColor: '#F5D10D',
     textColor: '#181818',
   },
-  {
-    navColor: '#2A3132',
-    textColor: '#336B87',
-  },
-  {
-    navColor: '#FCE77D',
-    textColor: '#F96167',
-  },
-  {
-    navColor: '#3D155F',
-    textColor: '#DF678C',
-  },
-  {
-    navColor: '#358597',
-    textColor: '#F4A896',
-  }
+  // {
+  //   navColor: '#2A3132',
+  //   textColor: '#336B87',
+  // },
+  // {
+  //   navColor: '#FCE77D',
+  //   textColor: '#F96167',
+  // },
+  // {
+  //   navColor: '#3D155F',
+  //   textColor: '#DF678C',
+  // },
+  // {
+  //   navColor: '#358597',
+  //   textColor: '#F4A896',
+  // }
 ]
 
 
@@ -229,14 +235,23 @@ class App extends React.Component {
           changeRoute={this.changeRoute}
           isLoggedIn={this.state.isLoggedIn}
           logout={this.logout}
+          loginShow={this.state.loginShow}
+          login={this.login}
           role={this.state.role}
           toggleSignUp={this.toggleSignUp}
           toggleLogIn={this.toggleLogIn}
           navColor={this.state.navColor}
           textColor={this.state.textColor}
         />
-        {this.state.loginShow ? <LogInDisplay login={this.login}/> : null}
-        {this.state.signupShow ? <SignUpDisplay signup={this.signup}/> : null}
+        {this.state.signupShow ?
+          <Modal show={this.state.signupShow} onHide={this.toggleSignUp}>
+            <ModalHeader>
+              <ModalTitle>Modal</ModalTitle>
+            </ModalHeader>
+            <ModalBody>
+              <SignUpDisplay signup={this.signup}/>
+            </ModalBody>
+          </Modal> : null}
         {this.state.isLoggedIn && this.state.users[0] && this.state.role === "user"? <SingleUserDisplay user={this.state.users[0]}/> : null}
         {this.state.route === "" && this.state.isLoggedIn ? <div></div> : null}
         {this.state.route === "allUsers" && this.state.isLoggedIn ?
@@ -257,7 +272,7 @@ class App extends React.Component {
         {this.state.route === "distro" && this.state.isLoggedIn ?
           <DistroDisplay/>
             : null}
-        {!this.state.isLoggedIn && !this.state.loginShow && !this.state.signupShow ? <SplashScreen textColor={this.state.textColor}/> : null}
+        {!this.state.isLoggedIn ? <SplashScreen textColor={this.state.textColor}/> : null}
         <Footer navColor={this.state.navColor}/>
       </div>
     )

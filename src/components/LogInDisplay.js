@@ -24,8 +24,7 @@ class LogInDisplay extends React.Component {
 
 
   render = () => {
-    return <div>
-      <h1>LOG IN</h1>
+    return <React.Fragment>
       <form onSubmit={this.handleLogin}>
         <input
           type="text"
@@ -41,7 +40,7 @@ class LogInDisplay extends React.Component {
           id="password"/>
         <input type="submit" value="Log In"/>
       </form>
-    </div>
+    </React.Fragment>
   }
 }
 
