@@ -39,6 +39,9 @@ class SignUpDisplay extends React.Component {
 
   handleSignup = (e) => {
     e.preventDefault()
+    if(this.props.toggle) {
+      this.props.toggle()
+    }
     let distroArray = []
     this.state.numOfDistroInputs.map((input, index) => {
       let distroNum = "distro" + index
@@ -58,7 +61,8 @@ class SignUpDisplay extends React.Component {
       phone: this.state.phone,
       title: this.state.title,
       role: this.state.role,
-      distros: distroArray
+      distros: distroArray,
+      src: this.props.src
     }
     console.log(newSignup);
     this.props.signup(newSignup)
@@ -73,7 +77,7 @@ class SignUpDisplay extends React.Component {
 
   render = () => {
     return <div>
-      <h1>SIGN UP</h1>
+      <h1>CREATE NEW USER</h1>
       <form onSubmit={this.handleSignup}>
         <input
           type="email"

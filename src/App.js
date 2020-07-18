@@ -208,7 +208,9 @@ class App extends React.Component {
       distros: obj.distros
     }).then((response) => {
       console.log('new user created');
-      this.toggleSignUp()
+      if(obj.src === 'splash'){
+        this.toggleSignUp()
+      }
     })
   }
 
@@ -249,7 +251,7 @@ class App extends React.Component {
               <ModalTitle>Modal</ModalTitle>
             </ModalHeader>
             <ModalBody>
-              <SignUpDisplay signup={this.signup}/>
+              <SignUpDisplay src="splash" signup={this.signup}/>
             </ModalBody>
           </Modal> : null}
         {this.state.isLoggedIn && this.state.users[0] && this.state.role === "user"? <SingleUserDisplay user={this.state.users[0]}/> : null}
@@ -261,7 +263,8 @@ class App extends React.Component {
             displayUser={this.state.displayUser}
             displayUserProfile={this.displayUserProfile}
             refreshSingleUser={this.refreshSingleUser}
-            refreshUserList={this.refreshUserList}/>
+            refreshUserList={this.refreshUserList}
+            signup={this.signup}/>
             : null}
         {this.state.route === "createCallsheet" && this.state.isLoggedIn ?
           <CallsheetDisplay

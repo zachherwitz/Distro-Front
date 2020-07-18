@@ -2,6 +2,7 @@ import React from 'react';
 import AllUsers from './AllUsers';
 import NewUserForm from  './NewUserForm';
 import SingleUser from './SingleUser';
+import SignUpDisplay from '../SignUpDisplay';
 import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
@@ -14,15 +15,21 @@ class UserDisplay extends React.Component {
     showNewUserForm:false
   }
 
-  toggleNewUserForm = () => {
+  toggleNewUserFormTrue = () => {
     this.setState({
-      showNewUserForm:!this.state.showNewUserForm
+      showNewUserForm:true
+    })
+  }
+
+  toggleNewUserFormFalse = () => {
+    this.setState({
+      showNewUserForm:false
     })
   }
 
   render = () => {
     return <div>
-      <button onClick={this.toggleNewUserForm}>CREATE NEW USER</button>
+      <button onClick={this.toggleNewUserFormTrue}>CREATE NEW USER</button>
       <div>
         <AllUsers
           allUsers={this.props.allUsers}
@@ -41,12 +48,12 @@ class UserDisplay extends React.Component {
             </ModalBody>
           </Modal> : null}
       </div>
-      <Modal show={this.state.showNewUserForm} onHide={this.toggleNewUserForm}>
+      <Modal show={this.state.showNewUserForm} onHide={this.toggleNewUserFormFalse}>
         <ModalHeader>
           <ModalTitle>Modal</ModalTitle>
         </ModalHeader>
         <ModalBody>
-          <NewUserForm refreshUserList={this.props.refreshUserList}/>
+          <SignUpDisplay src="user" toggle={this.toggleNewUserFormFalse} signup={this.props.signup}/>
         </ModalBody>
       </Modal>
     </div>
