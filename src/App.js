@@ -27,7 +27,7 @@ let colorPairs = [
   //   textColor: '#FEC64D',
   // },
   {
-    navColor: '#F5D10D',
+    navColor: '#E0D001',
     textColor: '#181818',
   },
   // {
@@ -275,7 +275,10 @@ class App extends React.Component {
         {this.state.route === "distro" && this.state.isLoggedIn ?
           <DistroDisplay/>
             : null}
-        {!this.state.isLoggedIn ? <SplashScreen textColor={this.state.textColor}/> : null}
+        {!this.state.isLoggedIn ?
+          <SplashScreen
+            textColor={this.state.textColor}
+            toggleSignUp={this.toggleSignUp}/> : null}
         <Footer navColor={this.state.navColor}/>
       </div>
     )

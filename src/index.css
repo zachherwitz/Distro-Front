@@ -36,32 +36,63 @@ nav {
 }
 
 
-
-/*
+/* SPLASH STYLES */
 
 .splash-page {
-  display: flex;
-  justify-content: space-between;
-  padding: 5% 5% 0 5%;
+  display: grid;
+  grid-template-columns: 40% 60%;
+  grid-template-rows: 1fr;
+  padding: 5% 8% 5% 12%;
+  /* border: 2px solid green; */
+}
+
+.splash-text {
+  /* border: 2px solid black; */
+  font-family: 'fatfrank', sans-serif;
 }
 
 .splash-text h1 {
-  font-size: 4rem;
+  font-size: 5rem;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 2rem;
+}
+
+.splash-text ul {
+  margin: 0;
+  padding-left: 0;
+  line-height: 3rem;
+}
+
+.splash-text li {
+  list-style: none;
+  font-size: 2.5rem;
   margin: 0;
   padding: 0;
 }
 
-.splash-img-container {
-  display: flex;
-  justify-content: center
+.splash-text button {
+  font-size: 1.4rem;
+  margin: 3rem 0;
+  padding: .5rem 2rem;
+  background-color: #E0D001;
+  border: none;
+  border-radius: 10%;
 }
 
-.splash-img {
-  width: 70%;
-  margin-left: 1rem;
+.splash-image-container {
+  /* border: 2px solid pink; */
 }
- */
 
+.splash-image-container > img {
+  /* border: 2px solid teal; */
+  margin-left: 22%;
+  width: 78%;
+}
+
+
+
+/* FOOTER STYLES */
 
 footer {
   color: white;

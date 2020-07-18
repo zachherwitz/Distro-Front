@@ -1,17 +1,23 @@
 import React from 'react';
-import img from '../undraw_working_from_anywhere_ub67.png'
+import Splash from './../images/splash/SplashHeroCropped.png'
 
 class SplashScreen extends React.Component {
   render = () => {
-    return <div style={{color:this.props.textColor}}
+    return <div
     className="splash-page">
-    <div className="splash-text">
-      <h1>contacts,</h1>
-      <h1>contactless</h1>
-    </div>
-    <div className="splash-img-container">
-      <img src={img} alt="" className="splash-img"/>
-    </div>
+      <div className="splash-text">
+        <h1>Contacts, Contactless</h1>
+        <ul>
+          <li>Create Your Account</li>
+          <li>Add Your Team</li>
+          <li>Make a Movie</li>
+        </ul>
+
+        <button onClick={this.props.toggleSignUp}>SIGN UP</button>
+      </div>
+      <div className="splash-image-container">
+        <img src={Splash} alt="illustrations by Olivia McGiff https://www.instagram.com/oliviamcgiff/?hl=en"/>
+      </div>
     </div>
   }
 }
