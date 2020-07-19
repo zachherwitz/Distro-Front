@@ -22,8 +22,8 @@ class NewCallsheetForm extends React.Component {
 
   composeCallsheet = (e) => {
     e.preventDefault();
-    console.log(process.env.REACT_APP_WEATHER_API_KEY_NAME);
-    axios.get('http://api.weatherapi.com/v1/forecast.json?key=' + process.env.REACT_APP_WEATHER_API_KEY_NAME + '&q=' + this.state.zipcode + '&days=2').then(
+    // console.log(process.env.REACT_APP_WEATHER_API_KEY_NAME);
+    axios.get('https://api.weatherapi.com/v1/forecast.json?key=' + process.env.REACT_APP_WEATHER_API_KEY_NAME + '&q=' + this.state.zipcode + '&days=2').then(
       (response) => {
       console.log(response.data.forecast.forecastday[1]);
       let weatherObject = {
