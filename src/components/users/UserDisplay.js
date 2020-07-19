@@ -55,7 +55,7 @@ class UserDisplay extends React.Component {
         size="lg"
         dialogClassName="signup-modal">
         <ModalBody>
-          <SignUpDisplay src="user" toggle={this.toggleNewUserFormFalse} signup={this.props.signup}/>
+          <SignUpDisplay src="user" refreshUserList={this.props.refreshUserList} toggle={this.toggleNewUserFormFalse} signup={this.props.signup}/>
         </ModalBody>
       </Modal>
     </div>

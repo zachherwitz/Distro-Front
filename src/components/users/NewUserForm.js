@@ -112,7 +112,6 @@ class NewUserForm extends React.Component {
         <br/>
         <input type="Submit" readOnly value="Create New User"/>
       </form>
-      {this.state.newUserCreated?<h3>New crew member added to project!</h3> : null}
     </div>
   }
 }

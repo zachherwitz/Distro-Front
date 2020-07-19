@@ -40,7 +40,7 @@ class SingleUser extends React.Component {
         </ul>
       <button onClick={this.deleteUser}>Delete User</button>
       <button onClick={this.toggleEditForm}>Edit User</button>
-      {this.state.formShow ? <UpdateUserForm displayUser={this.props.displayUser} refreshSingleUser={this.props.refreshSingleUser}/> : null}
+      {this.state.formShow ? <UpdateUserForm displayUser={this.props.displayUser} refreshUserList={this.props.refreshUserList} refreshSingleUser={this.props.refreshSingleUser}/> : null}
       </div>
     </div>
   }

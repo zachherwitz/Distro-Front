@@ -31,6 +31,7 @@ class UpdateUserForm extends React.Component {
     axios.put('https://distro-app-api.herokuapp.com/users/' + userId, updatedUserObject).then((response) => {
       let updatedDisplayUser = response.data.updated;
       this.props.refreshSingleUser(updatedDisplayUser)
+      this.props.refreshUserList();
     })
   }
 

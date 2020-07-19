@@ -66,6 +66,9 @@ class SignUpDisplay extends React.Component {
     }
     console.log(newSignup);
     this.props.signup(newSignup)
+    if(this.props.refreshUserList) {
+      this.props.refreshUserList();
+    }
   }
 
   toggleAdvancedSetup = (e) => {
