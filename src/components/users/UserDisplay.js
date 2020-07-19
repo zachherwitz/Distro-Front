@@ -35,10 +35,11 @@ class UserDisplay extends React.Component {
           allUsers={this.props.allUsers}
           displayUserProfile={this.props.displayUserProfile}/>
         {this.props.displayUser ?
-          <Modal show={this.props.displayUser} onHide={this.props.clearDisplayedUser}>
-            <ModalHeader>
-              <ModalTitle>Modal</ModalTitle>
-            </ModalHeader>
+          <Modal
+            show={this.props.displayUser}
+            onHide={this.props.clearDisplayedUser}
+            size="lg"
+            dialogClassName="signup-modal">
             <ModalBody>
               <SingleUser
                 displayUser={this.props.displayUser}
@@ -48,10 +49,11 @@ class UserDisplay extends React.Component {
             </ModalBody>
           </Modal> : null}
       </div>
-      <Modal show={this.state.showNewUserForm} onHide={this.toggleNewUserFormFalse}>
-        <ModalHeader>
-          <ModalTitle>Modal</ModalTitle>
-        </ModalHeader>
+      <Modal
+        show={this.state.showNewUserForm}
+        onHide={this.toggleNewUserFormFalse}
+        size="lg"
+        dialogClassName="signup-modal">
         <ModalBody>
           <SignUpDisplay src="user" toggle={this.toggleNewUserFormFalse} signup={this.props.signup}/>
         </ModalBody>

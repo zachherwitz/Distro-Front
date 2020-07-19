@@ -131,10 +131,11 @@ class NewCallsheetForm extends React.Component {
           return <div key={index}>{user.user.name}</div>
         }): <div>No one added yet</div>}
         {this.state.addRecipients ?
-          <Modal show={this.state.addRecipients} onHide={this.toggleAddRecipients}>
-            <ModalHeader>
-              <ModalTitle>Modal</ModalTitle>
-            </ModalHeader>
+          <Modal
+          show={this.state.addRecipients}
+          onHide={this.toggleAddRecipients}
+          size="lg"
+          dialogClassName="signup-modal">
             <ModalBody>
               <AddRecipients
                 addRecipientsToAllCalled={this.addRecipientsToAllCalled}

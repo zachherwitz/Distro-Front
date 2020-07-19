@@ -54,7 +54,7 @@ class DistroDisplay extends React.Component{
   }
 
   render = () => {
-    return <div>
+    return <div className="distro-display">
       <h1>Distro Display</h1>
       <form onSubmit={this.search}>
         <select
@@ -68,7 +68,8 @@ class DistroDisplay extends React.Component{
         <input
           type="text"
           id="search-bar"
-          ref={input => this.searchbar = input}/>
+          ref={input => this.searchbar = input}
+          placeholder="search"/>
         <input type="submit" value="search"/>
       </form>
       {this.state.returnedUsers ? this.state.returnedUsers.map(

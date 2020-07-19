@@ -22,7 +22,6 @@ class SingleUser extends React.Component {
 
   render = () => {
     return <div>
-      <h1>This is my SINGLEUSER component</h1>
       <h2>{this.props.displayUser.name}</h2>
       <div>
         <h4>CALL: {this.props.displayUser.callsheet.callTime}</h4>
