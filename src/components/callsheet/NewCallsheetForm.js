@@ -22,31 +22,32 @@ class NewCallsheetForm extends React.Component {
 
   composeCallsheet = (e) => {
     e.preventDefault();
-    axios.get('http://api.weatherapi.com/v1/forecast.json?key=9a07fa42f81540b2a23185508201907&q=' + this.state.zipcode + '&days=2').then(
-      (response) => {
-      console.log(response.data.forecast.forecastday[1]);
-      let weatherObject = {
-        max: response.data.forecast.forecastday[1].day.maxtemp_f,
-        min: response.data.forecast.forecastday[1].day.mintemp_f,
-        rainChance: response.data.forecast.forecastday[1].day.daily_chance_of_rain,
-        weatherText: response.data.forecast.forecastday[1].day.condition.text,
-        sunrise: response.data.forecast.forecastday[1].astro.sunrise,
-        sunset: response.data.forecast.forecastday[1].astro.sunset
-      }
-      let callsheetObject = {
-        date: this.state.date,
-        episode: this.state.episode,
-        day: this.state.day,
-        scriptDraft: this.state.scriptDraft,
-        generalCallTime: this.state.crewCallTime,
-        generalLocation: this.state.crewLocation,
-        nearestHospital: this.state.hospital,
-        allCalled: this.state.allCalled,
-        weather: weatherObject
-      }
-      console.log(callsheetObject);
-      this.props.createCallsheet(callsheetObject);
-    })
+    console.log(process.env.REACT_APP_WEATHER_API_KEY_NAME);
+    // axios.get('http://api.weatherapi.com/v1/forecast.json?key=' + process.env.REACT_APP_WEATHER_API_KEY_NAME + '&q=' + this.state.zipcode + '&days=2').then(
+    //   (response) => {
+    //   console.log(response.data.forecast.forecastday[1]);
+    //   let weatherObject = {
+    //     max: response.data.forecast.forecastday[1].day.maxtemp_f,
+    //     min: response.data.forecast.forecastday[1].day.mintemp_f,
+    //     rainChance: response.data.forecast.forecastday[1].day.daily_chance_of_rain,
+    //     weatherText: response.data.forecast.forecastday[1].day.condition.text,
+    //     sunrise: response.data.forecast.forecastday[1].astro.sunrise,
+    //     sunset: response.data.forecast.forecastday[1].astro.sunset
+    //   }
+    //   let callsheetObject = {
+    //     date: this.state.date,
+    //     episode: this.state.episode,
+    //     day: this.state.day,
+    //     scriptDraft: this.state.scriptDraft,
+    //     generalCallTime: this.state.crewCallTime,
+    //     generalLocation: this.state.crewLocation,
+    //     nearestHospital: this.state.hospital,
+    //     allCalled: this.state.allCalled,
+    //     weather: weatherObject
+    //   }
+    //   console.log(callsheetObject);
+    //   this.props.createCallsheet(callsheetObject);
+    // })
   }
 
   confirmRecipients = (arr) => {
