@@ -2,6 +2,7 @@ import React from 'react';
 import CallsheetDisplay from './components/callsheet/CallsheetDisplay';
 import DistroDisplay from './components/distro/DistroDisplay';
 import Footer from './components/Footer';
+import Homepage from './components/Homepage';
 import Modal from "react-bootstrap/Modal";
 import ModalBody from "react-bootstrap/ModalBody";
 import ModalHeader from "react-bootstrap/ModalHeader";
@@ -18,34 +19,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import axios from 'axios';
 
 let colorPairs = [
-  // {
-  //   navColor: '#89ABE3FF',
-  //   textColor: '#0063B2FF',
-  // },
-  // {
-  //   navColor: '#F68A4C',
-  //   textColor: '#FEC64D',
-  // },
   {
-    navColor: '#E0D001',
+    navColor: 'yellow',
     textColor: '#181818',
-  },
-  // {
-  //   navColor: '#2A3132',
-  //   textColor: '#336B87',
-  // },
-  // {
-  //   navColor: '#FCE77D',
-  //   textColor: '#F96167',
-  // },
-  // {
-  //   navColor: '#3D155F',
-  //   textColor: '#DF678C',
-  // },
-  // {
-  //   navColor: '#358597',
-  //   textColor: '#F4A896',
-  // }
+  }
 ]
 
 
@@ -255,7 +232,7 @@ class App extends React.Component {
             </ModalBody>
           </Modal> : null}
         {this.state.isLoggedIn && this.state.users[0] && this.state.role === "user"? <SingleUserDisplay user={this.state.users[0]}/> : null}
-        {this.state.route === "" && this.state.isLoggedIn ? <div></div> : null}
+        {this.state.route === "" && this.state.isLoggedIn ? <Homepage changeRoute={this.changeRoute}/> : null}
         {this.state.route === "allUsers" && this.state.isLoggedIn ?
           <UserDisplay
             allUsers={this.state.users}

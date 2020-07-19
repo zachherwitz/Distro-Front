@@ -4,10 +4,10 @@ import LogInDisplay from './LogInDisplay';
 
 class NavBar extends React.Component {
   render = () => {
-    return <nav style={{background:this.props.navColor}}>
+    return <div className="navigation" style={{background:this.props.navColor}}>
       <div className="nav-logo" style={{color:this.props.textColor}}>d<span>|</span>STRO</div>
       {this.props.isLoggedIn ?
-        <div className="nav-buttons">
+        <div className="nav-buttons-admin">
         {this.props.role === 'admin' ?
           <React.Fragment>
             <div
@@ -36,7 +36,7 @@ class NavBar extends React.Component {
           <LogInDisplay login={this.props.login}/>
         </div>
       }
-    </nav>
+    </div>
   }
 }
 

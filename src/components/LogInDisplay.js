@@ -26,18 +26,20 @@ class LogInDisplay extends React.Component {
   render = () => {
     return <React.Fragment>
       <form onSubmit={this.handleLogin}>
-        <input
-          type="text"
-          required
-          placeholder="email"
-          onKeyUp={this.handleInput}
-          id="email"/>
-        <input
-          type="text"
-          required
-          placeholder="password"
-          onKeyUp={this.handleInput}
-          id="password"/>
+        <div className="signup-input-container">
+          <input
+            type="text"
+            required
+            placeholder="email"
+            onKeyUp={this.handleInput}
+            id="email"/>
+          <input
+            type="password"
+            required
+            placeholder="password"
+            onKeyUp={this.handleInput}
+            id="password"/>
+          </div>
         <input type="submit" value="Log In"/>
       </form>
     </React.Fragment>
