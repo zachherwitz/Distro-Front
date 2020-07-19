@@ -4,6 +4,10 @@ html, body, #root, .app-container {
   font-family: 'fatfrank', sans-serif;
 }
 
+input {
+  font-family: Arial;
+}
+
 .app-container {
   display: grid;
   grid-template-rows: 10% 1fr 10%;
@@ -182,8 +186,13 @@ html, body, #root, .app-container {
   font-size: 1.4rem;
   padding: .5rem 2rem;
   background-color: #eeb53c;
+  opacity: .85;
   border: none;
-  border-radius: 10%;
+  border-radius: 10px;
+}
+
+.splash-text button:hover{
+  opacity: 1;
 }
 
 .splash-image-container {
@@ -203,6 +212,21 @@ html, body, #root, .app-container {
   height: 100%;
   display: flex;
   align-items: center;
+}
+
+.homepage button {
+  /* display: flex; */
+  font-size: 1.5rem;
+  /* background: transparent; */
+  outline: none;
+}
+
+.homepage button:hover {
+  /* background: rgba(255, 255, 255, 0.2); */
+}
+
+.homepage button:focus {
+  outline: none;
 }
 
 .homepage h1 {
@@ -248,7 +272,74 @@ html, body, #root, .app-container {
 
 .distro-section {
   grid-column: 3 / 4;
-  background-image: url('../src/images/homepage/Homepage3.png');
+  background-image: url('../src/images/homepage/Homepage1.png');
+}
+
+/* --USER-ADMIN STYLES */
+
+.admin-user-display {
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 20% 80%;
+}
+
+.admin-user-display > h1 {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  margin: auto;
+  font-size: 2rem;
+}
+
+.admin-user-display button {
+  background-color: white;
+}
+
+#admin-user-button {
+  width: 50%;
+  height: 50%;
+  margin: auto;
+  font-size: 2rem;
+  background-color: #eeb53c;
+  opacity: .85;
+  outline: none;
+  border: none;
+  border-radius: 10px;
+}
+
+#admin-user-button:hover {
+  opacity: 1;
+}
+
+#admin-user-button:focus {
+  outline: none;
+}
+
+.admin-allusers {
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  margin: 0 auto;
+  height: 100%;
+  width: 50%;
+}
+
+.admin-allusers h3:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.admin-user-illustration {
+  background-image: url('./images/user/UserIllustration.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+.admin-allusers-container {
+  overflow: scroll;
+  height: 100%;
+  width: 100%;
 }
 
 /* --CALLSHEET STYLES */
@@ -308,6 +399,8 @@ html, body, #root, .app-container {
 
 .callsheet-form {
   border: 3px solid #eeb53c;
+  border-top: 30px solid #eeb53c;
+  border-left: 30px solid #eeb53c;
   background: white;
   padding: 5%;
   grid-row: 2 / 3;

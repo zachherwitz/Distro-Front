@@ -1,5 +1,6 @@
 import React from 'react';
 import UpdateUserForm from './UpdateUserForm'
+import Weather from './Weather'
 import axios from 'axios';
 
 class SingleUser extends React.Component {
@@ -25,14 +26,15 @@ class SingleUser extends React.Component {
       <h2>{this.props.displayUser.name}</h2>
       <div>
         <h4>CALL: {this.props.displayUser.callsheet.callTime}</h4>
-        <h4>REPORT TO {this.props.displayUser.callsheet.location}</h4>
-        <ul>DEV:: Crew Information:
+        <h4>REPORT TO: {this.props.displayUser.callsheet.location}</h4>
+        <ul>Crew Information:
           <li>Department: {this.props.displayUser.department}</li>
           <li>Title: {this.props.displayUser.title}</li>
           <li>Email: {this.props.displayUser.email}</li>
           <li>Phone: {this.props.displayUser.phone}</li>
           <li>Role: {this.props.displayUser.role}</li>
-          <ul>
+          <Weather callsheet={this.props.callsheet}/>
+        <ul>
             {this.props.displayUser.distros.map((distro) => {
               return <li>{distro}</li>
             })}

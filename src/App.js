@@ -102,6 +102,11 @@ class App extends React.Component {
               users: response.data,
               role: 'user'
             })
+          axios.get('https://distro-app-api.herokuapp.com/callsheet').then((response) => {
+            this.setState({
+              callsheet: response.data[response.data.length - 1]
+            })
+          })
         })
       }
     })
@@ -130,6 +135,12 @@ class App extends React.Component {
               (response) => {
                 this.setState({
                   users: response.data
+                }, () => {
+                  axios.get('https://distro-app-api.herokuapp.com/callsheet').then((response) => {
+                    this.setState({
+                      callsheet: response.data[response.data.length - 1]
+                    })
+                  })
                 })
             })
           } else if(this.state.role === 'admin') {
@@ -138,10 +149,16 @@ class App extends React.Component {
               (response) => {
                 this.setState({
                   users: response.data
-                }
-              )
-            })
-          }}
+                }, () => {
+                  axios.get('https://distro-app-api.herokuapp.com/callsheet').then((response) => {
+                    this.setState({
+                      callsheet: response.data[response.data.length - 1]
+                    })
+                  })
+                })
+              })
+            }
+          }
         )
       }
       this.toggleLogIn()
@@ -246,6 +263,7 @@ class App extends React.Component {
         {this.state.route === "" && this.state.isLoggedIn ? <Homepage changeRoute={this.changeRoute}/> : null}
         {this.state.route === "allUsers" && this.state.isLoggedIn ?
           <UserDisplay
+            callsheet={this.state.callsheet}
             allUsers={this.state.users}
             clearDisplayedUser={this.clearDisplayedUser}
             displayUser={this.state.displayUser}

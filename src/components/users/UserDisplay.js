@@ -9,10 +9,12 @@ import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalTitle from "react-bootstrap/ModalTitle";
 
+import UserIllustration from "../../images/user/UserIllustration.png"
 
 class UserDisplay extends React.Component {
   state = {
-    showNewUserForm:false
+    showNewUserForm:false,
+    allUserDisplay: true
   }
 
   toggleNewUserFormTrue = () => {
@@ -27,28 +29,39 @@ class UserDisplay extends React.Component {
     })
   }
 
+  toggleAllUserDisplay = () => {
+    this.setState({
+      allUserDisplay:!this.state.allUserDisplay
+    })
+  }
+
   render = () => {
-    return <div>
-      <button onClick={this.toggleNewUserFormTrue}>CREATE NEW USER</button>
-      <div>
-        <AllUsers
-          allUsers={this.props.allUsers}
-          displayUserProfile={this.props.displayUserProfile}/>
-        {this.props.displayUser ?
-          <Modal
-            show={this.props.displayUser}
-            onHide={this.props.clearDisplayedUser}
-            size="lg"
-            dialogClassName="signup-modal">
-            <ModalBody>
-              <SingleUser
-                displayUser={this.props.displayUser}
-                refreshSingleUser={this.props.refreshSingleUser}
-                refreshUserList={this.props.refreshUserList}
-                clearDisplayedUser={this.props.clearDisplayedUser}/>
-            </ModalBody>
-          </Modal> : null}
+    return <div className="admin-user-display">
+      <button id="admin-user-button" onClick={this.toggleAllUserDisplay}>ALL USERS</button>
+      <button id="admin-user-button" onClick={this.toggleNewUserFormTrue}>CREATE NEW USER</button>
+      <div className="admin-allusers">
+        {this.state.allUserDisplay ?
+          <AllUsers
+            callsheet={this.props.callsheet}
+            allUsers={this.props.allUsers}
+            displayUserProfile={this.props.displayUserProfile}/> : null}
+          {this.props.displayUser ?
+            <Modal
+              show={this.props.displayUser}
+              onHide={this.props.clearDisplayedUser}
+              size="lg"
+              dialogClassName="signup-modal">
+              <ModalBody>
+                <SingleUser
+                  callsheet={this.props.callsheet}
+                  displayUser={this.props.displayUser}
+                  refreshSingleUser={this.props.refreshSingleUser}
+                  refreshUserList={this.props.refreshUserList}
+                  clearDisplayedUser={this.props.clearDisplayedUser}/>
+              </ModalBody>
+            </Modal> : null}
       </div>
+      <div className="admin-user-illustration"></div>
       <Modal
         show={this.state.showNewUserForm}
         onHide={this.toggleNewUserFormFalse}
