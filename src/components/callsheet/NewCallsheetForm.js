@@ -22,10 +22,11 @@ class NewCallsheetForm extends React.Component {
 
   composeCallsheet = (e) => {
     e.preventDefault();
+    this.props.toggleSubmitted();
     // console.log(process.env.REACT_APP_WEATHER_API_KEY_NAME);
     axios.get('https://api.weatherapi.com/v1/forecast.json?key=' + process.env.REACT_APP_WEATHER_API_KEY_NAME + '&q=' + this.state.zipcode + '&days=2').then(
       (response) => {
-      console.log(response.data.forecast.forecastday[1]);
+      // console.log(response.data.forecast.forecastday[1]);
       let weatherObject = {
         max: response.data.forecast.forecastday[1].day.maxtemp_f,
         min: response.data.forecast.forecastday[1].day.mintemp_f,
@@ -35,6 +36,7 @@ class NewCallsheetForm extends React.Component {
         sunset: response.data.forecast.forecastday[1].astro.sunset
       }
       let callsheetObject = {
+        projectTitle: this.state.projectTitle,
         date: this.state.date,
         episode: this.state.episode,
         day: this.state.day,
@@ -45,7 +47,7 @@ class NewCallsheetForm extends React.Component {
         allCalled: this.state.allCalled,
         weather: weatherObject
       }
-      console.log(callsheetObject);
+      // console.log(callsheetObject);
       this.props.createCallsheet(callsheetObject);
     })
   }
@@ -113,6 +115,14 @@ class NewCallsheetForm extends React.Component {
       <form onSubmit={this.composeCallsheet}>
         <input
           onKeyUp={this.handleInput}
+          required
+          id="projectTitle"
+          type="text"
+          placeholder="project title"/>
+        <br/>
+        <input
+          onKeyUp={this.handleInput}
+          required
           id="date"
           type="text"
           placeholder="date"/>
@@ -137,12 +147,14 @@ class NewCallsheetForm extends React.Component {
         <br/>
         <input
           onKeyUp={this.handleInput}
+          required
           id="crewCallTime"
           type="text"
           placeholder="crew call time"/>
         <br/>
         <input
           onKeyUp={this.handleInput}
+          required
           id="crewLocation"
           type="text"
           placeholder="crew location"/>
@@ -157,6 +169,7 @@ class NewCallsheetForm extends React.Component {
           onKeyUp={this.handleInput}
           id="zipcode"
           type="text"
+          required
           placeholder="zip code"/>
         <br/>
         <button onClick={this.toggleAddRecipients}>Add Recipients</button>

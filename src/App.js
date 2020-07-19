@@ -54,6 +54,11 @@ class App extends React.Component {
     axios.post('https://distro-app-api.herokuapp.com/callsheet', callsheet).then(
       (response) => {
         this.setState({callsheet:response.data.createdCallsheet})
+        axios.get('https://distro-app-api.herokuapp.com/callsheet').then((response) => {
+          this.setState({
+            callsheet: response.data[response.data.length - 1]
+          })
+        })
         axios.get('https://distro-app-api.herokuapp.com/users').then((response) => {
           this.setState({
             users: response.data
@@ -83,6 +88,11 @@ class App extends React.Component {
               role: 'admin'
             }
           )
+          axios.get('https://distro-app-api.herokuapp.com/callsheet').then((response) => {
+            this.setState({
+              callsheet: response.data[response.data.length - 1]
+            })
+          })
         })
       } else if(response.data.role === "user") {
         axios.get('https://distro-app-api.herokuapp.com/users/user/' + response.data.email).then(

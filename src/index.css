@@ -256,7 +256,7 @@ html, body, #root, .app-container {
 .callsheet {
   display: grid;
   grid-template-columns: 1fr 55% 1fr;
-  padding: 5% 5% 2% 5%;
+  padding: 2% 5% 2% 5%;
 }
 
 .callsheet-left {
@@ -271,11 +271,39 @@ html, body, #root, .app-container {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  display: flex;
   justify-content: center;
   display: grid;
   grid-template-rows: 1fr 75% 1fr;
   grid-template-columns: 1fr 60% 1fr;
+}
+
+.callsheet-container h1 {
+  grid-row: 1 / 2;
+  grid-column: 2 / 3;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.callsheet-container h2 {
+  grid-row: 3 / 4;
+  grid-column: 2 / 3;
+  text-align: center;
+  padding-top: 1rem;
+}
+
+.callsheet-submitted-alert-enter {
+  opacity: 0;
+}
+.callsheet-submitted-alert-enter-active {
+  opacity: 1;
+  transition: opacity 200ms;
+}
+.callsheet-submitted-alert-exit {
+  opacity: 1;
+}
+.callsheet-submitted-alert-exit-active {
+  opacity: 0;
+  transition: opacity 200ms;
 }
 
 .callsheet-form {
@@ -304,7 +332,7 @@ html, body, #root, .app-container {
 footer {
   background: #eeb53c;
   color: white;
-  text-shadow: 2px 2px black;
+  text-shadow: 1px 1px black;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
               0px -4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 50px 0px 0px 0px;
