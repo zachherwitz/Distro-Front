@@ -76,80 +76,80 @@ class SignUpDisplay extends React.Component {
   }
 
   render = () => {
-    return <div>
-      <h1>CREATE NEW USER</h1>
+    return <div className="signup-form">
+      <h1>Create a new user: </h1>
       <form onSubmit={this.handleSignup}>
-        <input
-          type="email"
-          required
-          placeholder="email"
-          onKeyUp={this.handleInput}
-          id="email"
-        />
-        <br/>
-        <input
-          type="text"
-          required
-          placeholder="password"
-          onKeyUp={this.handleInput}
-          id="password"
-        />
-        <br/>
-        <input
-          type="text"
-          required
-          placeholder="name"
-          onKeyUp={this.handleInput}
-          id="name"
-        />
-        <br/>
+        <div className="signup-input-container">
+          <input
+            type="email"
+            required
+            placeholder="email"
+            onKeyUp={this.handleInput}
+            id="email"
+          />
+          <input
+            type="text"
+            required
+            placeholder="password"
+            onKeyUp={this.handleInput}
+            id="password"
+          />
+          <input
+            type="text"
+            required
+            placeholder="name"
+            onKeyUp={this.handleInput}
+            id="name"
+          />
+        </div>
+        <hr></hr>
         {!this.state.toggleAdvancedSetup
         ?
           <button onClick={this.toggleAdvancedSetup}>Advanced Setup</button>
         :
-        <div>
+        <div className="signup-extra-input-container">
           <input
             type="text"
             placeholder="department"
             onKeyUp={this.handleInput}
             id="department"
           />
-          <br/>
           <input
             type="text"
             placeholder="phone"
             onKeyUp={this.handleInput}
             id="phone"
           />
-          <br/>
           <input
             type="text"
             placeholder="title"
             onKeyUp={this.handleInput}
             id="title"
           />
-          <br/>
           <input
             type="text"
             placeholder="admin or user"
             onKeyUp={this.handleInput}
             id="role"
           />
-          <br/>
-          {this.state.numOfDistroInputs.map((input, index) => {
-            return <div key={index}>
-              <input
-                type="text"
-                placeholder="distros"
-                onKeyUp={this.handleDistros}
-                id={"distro" + index}
-              />
-              <button onClick={this.additionalDistro}>+</button>
+          <div className="distro-container">
+            <div>
+              {this.state.numOfDistroInputs.map((input, index) => {
+                return <div key={index}>
+                  <input
+                    type="text"
+                    placeholder="distros"
+                    onKeyUp={this.handleDistros}
+                    id={"distro" + index}
+                  />
+                  <button onClick={this.additionalDistro}>+</button>
+                </div>
+              })}
             </div>
-          })}
+            <p>Copy goes here explaining what distros are, and how to eventually use them</p>
+          </div>
         </div>
       }
-        <br/>
         <input type="submit" value="Sign Up"/>
       </form>
     </div>

@@ -19,12 +19,14 @@ class LogInDisplay extends React.Component {
       email: this.state.email,
       password: this.state.password
     }
+    this.props.toggleLogin()
     this.props.login(newLogin)
   }
 
 
   render = () => {
-    return <React.Fragment>
+    return <div className="login-form">
+      <h1>Login: </h1>
       <form onSubmit={this.handleLogin}>
         <div className="signup-input-container">
           <input
@@ -42,7 +44,7 @@ class LogInDisplay extends React.Component {
           </div>
         <input type="submit" value="Log In"/>
       </form>
-    </React.Fragment>
+    </div>
   }
 }
 

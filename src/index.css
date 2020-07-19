@@ -9,35 +9,63 @@ html, body, #root, .app-container {
   grid-template-rows: 10% 1fr 10%;
 }
 
-/* NAV STYLES */
+/* --NAV STYLES */
 
 .navigation {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 0px 0px 50px 0px;
-  padding: 3rem;
+  padding: 0 3rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background: #eeb53c
 }
 
 .nav-logo {
-  font-size: 3rem;
+  font-size: 4rem;
+  margin-left: 1rem;
+  color: white;
+  text-shadow: 3px 3px black;
 }
 
 .nav-buttons {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 40%;
+  width: 25%;
   font-size: 2rem;
+  color: white;
+  text-shadow: 1px 1px black;
 }
+
+.nav-buttons div {
+  padding: 1rem;
+}
+
+.nav-buttons div:hover {
+  background: #e7ae33;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 
 .nav-buttons-admin {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 60%;
   font-size: 2rem;
+  color: white;
+  text-shadow: 1px 1px black;
+}
+
+.nav-buttons-admin div {
+  padding: 1rem;
+}
+
+.nav-buttons-admin div:hover {
+  background: #e7ae33;
+  border-radius: 4px;
+  cursor: pointer;
 }
 
 .nav-buttons form {
@@ -45,28 +73,86 @@ html, body, #root, .app-container {
   display: flex;
 }
 
+/*  --SIGNUP STYLES */
+
+.signup-modal .modal-content {
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 5px 5px 50px 0;
+  border-top: 50px solid #eeb53c;
+  border-left: 50px solid #eeb53c;
+  padding: 0 4% 4%;
+}
+
+.signup-form {
+  font-family: 'fatfrank', sans-serif;
+}
+
+.signup-form h1 {
+  text-align: center;
+  margin: .5rem;
+}
+
+.signup-form form {
+
+}
+
+.signup-form input {
+  margin: .5rem 0;
+}
+
 .signup-input-container {
   display: flex;
   flex-direction: column;
 }
 
-.nav-buttons-admin {
+.signup-extra-input-container {
   display: flex;
-  justify-content: space-between;
-  font-size: 1.5rem;
+  flex-direction: column;
 }
 
+.distro-container {
+  display: flex;
+}
 
-/* SPLASH STYLES */
+.distro-container p {
+  width: 40%;
+  margin: 0 auto;
+  padding-top: 1rem;
+}
+
+/* --LOGIN STYLES */
+
+.login-modal .modal-content {
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 5px 5px 50px 0;
+  border-top: 50px solid #eeb53c;
+  border-left: 50px solid #eeb53c;
+  padding: 0 4% 4%;
+}
+
+.login-form {
+  font-family: 'fatfrank', sans-serif;
+}
+
+.login-form h1 {
+  text-align: center;
+  margin: .5rem;
+}
+
+.login-form input {
+  margin: .5rem 0;
+}
+
+/* --SPLASH STYLES */
 
 .splash-page {
   display: grid;
   grid-template-columns: 40% 60%;
-  grid-template-rows: 1fr;
-  padding: 5% 8% 5% 12%;
+  padding: 5% 10%;
 }
 
 .splash-text {
+  padding-top: 10%;
   font-family: 'fatfrank', sans-serif;
 }
 
@@ -80,31 +166,37 @@ html, body, #root, .app-container {
 .splash-text ul {
   margin: 0;
   padding-left: 0;
-  line-height: 3rem;
+  line-height: 3.5rem;
+  text-align: right;
 }
 
 .splash-text li {
   list-style: none;
-  font-size: 2.5rem;
+  font-size: 2rem;
   margin: 0;
-  padding: 0;
+
 }
 
 .splash-text button {
+  margin-top: 1rem;
   font-size: 1.4rem;
-  margin: 3rem 0;
   padding: .5rem 2rem;
-  background-color: #E0D001;
+  background-color: #eeb53c;
   border: none;
   border-radius: 10%;
 }
 
-.splash-image-container > img {
-  margin-left: 22%;
-  width: 78%;
+.splash-image-container {
+  padding-top: 10%;
+  display: flex;
+  justify-content: flex-end;
 }
 
-/* HOMEPAGE STYLES */
+.splash-image-container > img {
+  height: 500px;
+}
+
+/* --HOMEPAGE STYLES */
 
 .homepage {
   width: 100%;
@@ -159,7 +251,7 @@ html, body, #root, .app-container {
   background-image: url('../src/images/homepage/Homepage3.png');
 }
 
-/* CALLSHEET STYLES */
+/* --CALLSHEET STYLES */
 
 .callsheet {
   display: grid;
@@ -203,16 +295,48 @@ html, body, #root, .app-container {
   background-position: bottom;
 }
 
-/* FOOTER STYLES */
+/* --FOOTER STYLES */
 
 footer {
+  background: #eeb53c;
   color: white;
+  text-shadow: 2px 2px black;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25),
               0px -4px 4px 0px rgba(0, 0, 0, 0.25);
   border-radius: 50px 0px 0px 0px;
 }
 
-footer > h1 {
-  text-align: right;
-  margin-right: 3rem;
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+  padding: .5rem 2rem;
+}
+
+.footer-container > h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 2rem;
+}
+
+.socials {
+  display: flex;
+  justify-content: space-between;
+}
+
+.socials a {
+  color: white;
+}
+
+.socials a:hover {
+  color: white;
+}
+
+.socials i {
+  padding: .3rem 1rem;
+}
+
+.socials i:hover {
+  background: #e7ae33
 }

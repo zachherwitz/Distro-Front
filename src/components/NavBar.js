@@ -1,11 +1,25 @@
 import React from 'react';
 import LogInDisplay from './LogInDisplay';
-
+import Modal from "react-bootstrap/Modal";
+import ModalBody from "react-bootstrap/ModalBody";
+import ModalHeader from "react-bootstrap/ModalHeader";
+import ModalFooter from "react-bootstrap/ModalFooter";
+import ModalTitle from "react-bootstrap/ModalTitle";
 
 class NavBar extends React.Component {
+  state = {
+    showLogin: false
+  }
+
+  toggleLogin = () => {
+    this.setState({
+      showLogin:!this.state.showLogin
+    })
+  }
+
   render = () => {
-    return <div className="navigation" style={{background:this.props.navColor}}>
-      <div className="nav-logo" style={{color:this.props.textColor}}>d<span>|</span>STRO</div>
+    return <div className="navigation">
+      <div className="nav-logo">d<span>|</span>STRO</div>
       {this.props.isLoggedIn ?
         <div className="nav-buttons-admin">
         {this.props.role === 'admin' ?
@@ -28,12 +42,20 @@ class NavBar extends React.Component {
           </React.Fragment>
           : null
         }
-          <div onClick={this.props.logout}>Logout</div>
+          <div onClick={this.props.logout}>Log Out</div>
         </div>
         :
         <div className="nav-buttons">
-          <div onClick={this.props.toggleSignUp}>SignUp</div>
-          <LogInDisplay login={this.props.login}/>
+          <div onClick={this.props.toggleSignUp}>Sign Up</div>
+          <div onClick={this.toggleLogin}>Login</div>
+          <Modal
+            show={this.state.showLogin}
+            onHide={this.toggleLogin}
+            dialogClassName="login-modal">
+            <ModalBody>
+              <LogInDisplay toggleLogin={this.toggleLogin} login={this.props.login}/>
+            </ModalBody>
+          </Modal>
         </div>
       }
     </div>

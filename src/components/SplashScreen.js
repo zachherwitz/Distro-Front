@@ -8,12 +8,11 @@ class SplashScreen extends React.Component {
       <div className="splash-text">
         <h1>Contacts, Contactless</h1>
         <ul>
-          <li>Create Your Account</li>
-          <li>Add Your Team</li>
-          <li>Make a Movie</li>
+          <li className="splash1">Create Your Account</li>
+          <li className="splash2">Add Your Team</li>
+          <li className="splash3">Make a Movie</li>
+          <button onClick={this.props.toggleSignUp}>SIGN UP</button>
         </ul>
-
-        <button onClick={this.props.toggleSignUp}>SIGN UP</button>
       </div>
       <div className="splash-image-container">
         <img src={Splash} alt="illustrations by Olivia McGiff https://www.instagram.com/oliviamcgiff/?hl=en"/>

@@ -18,12 +18,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import axios from 'axios';
 
-let colorPairs = [
-  {
-    navColor: '#eeb53c',
-    textColor: '#181818',
-  }
-]
+// let colorPairs = [
+//   {
+//     navColor: '#eeb53c',
+//     textColor: '#181818',
+//   }
+// ]
 
 
 class App extends React.Component {
@@ -63,16 +63,16 @@ class App extends React.Component {
   }
 
   // This is me venting after a long night of session work ><
-  colorRandomizer = () => {
-    let combo = colorPairs[Math.floor(Math.random() * colorPairs.length)]
-    this.setState({
-      navColor:combo.navColor,
-      textColor:combo.textColor
-    })
-  }
+  // colorRandomizer = () => {
+  //   let combo = colorPairs[Math.floor(Math.random() * colorPairs.length)]
+  //   this.setState({
+  //     navColor:combo.navColor,
+  //     textColor:combo.textColor
+  //   })
+  // }
 
   componentDidMount = () => {
-    this.colorRandomizer()
+    // this.colorRandomizer()
     axios.get('https://distro-app-api.herokuapp.com/session', {withCredentials:true}).then((response) => {
       if(response.data.role === "admin") {
         axios.get('https://distro-app-api.herokuapp.com/users').then(
@@ -223,10 +223,11 @@ class App extends React.Component {
           textColor={this.state.textColor}
         />
         {this.state.signupShow ?
-          <Modal show={this.state.signupShow} onHide={this.toggleSignUp}>
-            <ModalHeader>
-              <ModalTitle>Modal</ModalTitle>
-            </ModalHeader>
+          <Modal
+            show={this.state.signupShow}
+            onHide={this.toggleSignUp}
+            size="lg"
+            dialogClassName="signup-modal">
             <ModalBody>
               <SignUpDisplay src="splash" signup={this.signup}/>
             </ModalBody>
