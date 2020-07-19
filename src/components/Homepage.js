@@ -10,7 +10,7 @@ class Homepage extends React.Component {
           <button
             className="homepage-button"
             route="allUsers"
-            onClick={this.props.changeRoute}>>VIEW</button>
+            onClick={this.props.changeRoute}>VIEW</button>
         </section>
         <section className="callsheet-section">
           <h1>CALLSHEET</h1>

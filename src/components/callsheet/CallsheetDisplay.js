@@ -6,11 +6,14 @@ class CallsheetDisplay extends React.Component {
     callsheet: this.props.callsheet
   }
   render = () => {
-    return <div>
-      <h1>This is my Callsheet Display!</h1>
-      <NewCallsheetForm
-        createCallsheet={this.props.createCallsheet}
-        allUsers={this.props.allUsers} />
+    return <div className="callsheet">
+      <div className="callsheet-left"></div>
+      <div className="callsheet-container">
+        <NewCallsheetForm
+          createCallsheet={this.props.createCallsheet}
+          allUsers={this.props.allUsers} />
+      </div>
+      <div className="callsheet-right"></div>
     </div>
   }
 }

@@ -81,7 +81,7 @@ class NewCallsheetForm extends React.Component {
   }
 
   render = () => {
-    return <div>
+    return <div className="callsheet-form">
       <form onSubmit={this.composeCallsheet}>
         <input
           onKeyUp={this.newInput}

@@ -159,6 +159,49 @@ html, body, #root, .app-container {
   background-image: url('../src/images/homepage/Homepage3.png');
 }
 
+/* CALLSHEET STYLES */
+
+.callsheet {
+  display: grid;
+  grid-template-columns: 1fr 55% 1fr;
+  padding: 5% 5% 2% 5%;
+}
+
+.callsheet-left {
+  background-image: url('../src/images/callsheet/OfficePerson.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.callsheet-container {
+  /* background-image: url('../src/images/callsheet/CallSheetBlob.png'); */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  display: grid;
+  grid-template-rows: 1fr 75% 1fr;
+  grid-template-columns: 1fr 60% 1fr;
+}
+
+.callsheet-form {
+  border: 3px solid #eeb53c;
+  background: white;
+  padding: 5%;
+  grid-row: 2 / 3;
+  grid-column: 2 / 3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 50px 0px;
+}
+
+.callsheet-right {
+  background-image: url('../src/images/callsheet/CameraPerson.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
 
 /* FOOTER STYLES */
 

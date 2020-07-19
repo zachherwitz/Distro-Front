@@ -20,7 +20,7 @@ import axios from 'axios';
 
 let colorPairs = [
   {
-    navColor: 'yellow',
+    navColor: '#eeb53c',
     textColor: '#181818',
   }
 ]
