@@ -23,7 +23,8 @@ class Recipient extends React.Component {
       recipientObject: {
         user: this.props.user,
         specCallTime: specCallTime,
-        specLocation: specLocation
+        specLocation: specLocation,
+        date: this.props.callsheetDate
       }
     }, () => {
       this.props.addUser(this.state.recipientObject);
@@ -42,7 +43,7 @@ class Recipient extends React.Component {
     return <div>
       <div style={{display: 'flex'}}>
         <div>
-          {user.name} - {user.department} - {user.title}
+          {user.name}{user.title ? " - " + user.title : null}
         </div>
         {this.state.toggleSpecifics ?
           <div>

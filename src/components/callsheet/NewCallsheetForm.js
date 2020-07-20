@@ -56,38 +56,6 @@ class NewCallsheetForm extends React.Component {
     })
   }
 
-  // newInput = (e) => {
-  //   const attributeId = e.target.getAttribute('id');
-  //   switch (attributeId) {
-  //     case 'date':
-  //       this.setState({[attributeId]:e.target.value})
-  //       break;
-  //     case 'episode':
-  //       this.setState({[attributeId]:e.target.value})
-  //       break;
-  //     case 'day':
-  //       this.setState({[attributeId]:e.target.value})
-  //       break;
-  //     case 'scriptDraft':
-  //       this.setState({[attributeId]:e.target.value})
-  //       break;
-  //     case 'crewCallTime':
-  //       this.setState({[attributeId]:e.target.value})
-  //       break;
-  //     case 'crewLocation':
-  //       this.setState({[attributeId]:e.target.value})
-  //       break;
-  //     case 'hospital':
-  //       this.setState({[attributeId]:e.target.value})
-  //       break;
-  //     case 'allCalled':
-  //       this.setState({[attributeId]:e.target.value})
-  //       break;
-  //     default:
-  //       break;
-  //   }
-  // }
-
   handleInput = (e) => {
     const attributeId = e.target.getAttribute('id');
     switch (attributeId) {
@@ -157,6 +125,7 @@ class NewCallsheetForm extends React.Component {
           dialogClassName="signup-modal">
             <ModalBody>
               <AddRecipients
+                callsheetDate={this.state.date}
                 addRecipientsToAllCalled={this.addRecipientsToAllCalled}
                 allUsers={this.props.allUsers}
                 confirmRecipients={this.confirmRecipients}

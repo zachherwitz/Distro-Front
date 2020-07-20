@@ -31,7 +31,7 @@ class AddRecipients extends React.Component {
       <h1>This is my add recipients module!</h1>
       {this.props.allUsers.map((user, index) => {
         return <div key={index}>
-          <Recipient addUser={this.addUser} user={user}/>
+          <Recipient callsheetDate={this.props.callsheetDate} addUser={this.addUser} user={user}/>
         </div>
       })}
       <h1>CONFIRMED RECIPIENTS:</h1>
