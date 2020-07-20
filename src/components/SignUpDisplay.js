@@ -64,10 +64,10 @@ class SignUpDisplay extends React.Component {
       distros: distroArray,
       src: this.props.src
     }
-    console.log(newSignup);
+    // console.log(newSignup);
     this.props.signup(newSignup)
-    if(this.props.refreshUserList) {
-      this.props.refreshUserList();
+    if(this.props.refreshAllUsers) {
+      this.props.refreshAllUsers();
     }
   }
 

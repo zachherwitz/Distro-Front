@@ -186,6 +186,7 @@ class App extends React.Component {
   }
 
   refreshUserList = () => {
+    console.log('refreshing user list');
     axios.get('https://distro-app-api.herokuapp.com/users').then((response) => {
       this.setState({
         users: response.data

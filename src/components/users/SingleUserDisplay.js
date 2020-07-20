@@ -11,7 +11,7 @@ class SingleUserDisplay extends React.Component {
         <div>
           {this.props.callsheet ?
             <div>
-              <h3>DATE: {this.props.callsheet.date}</h3>
+              <h3>DATE: {this.props.user.callsheet.date}</h3>
               <h3>PROJECT: {this.props.callsheet.projectTitle}</h3>
             </div> : null }
           <h4>CALL: {this.props.user.callsheet.callTime}</h4>

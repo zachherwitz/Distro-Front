@@ -11,6 +11,8 @@ import ModalTitle from "react-bootstrap/ModalTitle";
 
 import UserIllustration from "../../images/user/UserIllustration.png"
 
+import axios from "axios";
+
 class UserDisplay extends React.Component {
   state = {
     showNewUserForm:false,
@@ -32,6 +34,15 @@ class UserDisplay extends React.Component {
   toggleAllUserDisplay = () => {
     this.setState({
       allUserDisplay:!this.state.allUserDisplay
+    })
+  }
+
+  refreshAllUsers = () => {
+    this.props.refreshUserList()
+    axios.get('https://distro-app-api.herokuapp.com/users').then((response) => {
+      this.setState({
+        allUsers: response.data
+      })
     })
   }
 
@@ -68,7 +79,7 @@ class UserDisplay extends React.Component {
         size="lg"
         dialogClassName="signup-modal">
         <ModalBody>
-          <SignUpDisplay src="user" refreshUserList={this.props.refreshUserList} toggle={this.toggleNewUserFormFalse} signup={this.props.signup}/>
+          <SignUpDisplay src="user" refreshAllUsers={this.refreshAllUsers} toggle={this.toggleNewUserFormFalse} signup={this.props.signup}/>
         </ModalBody>
       </Modal>
     </div>

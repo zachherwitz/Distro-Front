@@ -25,6 +25,7 @@ class SingleUser extends React.Component {
     return <div>
       <h2>{this.props.displayUser.name}</h2>
       <div>
+        <h4>DATE: {this.props.displayUser.callsheet.date}</h4>
         <h4>CALL: {this.props.displayUser.callsheet.callTime}</h4>
         <h4>REPORT TO: {this.props.displayUser.callsheet.location}</h4>
         <ul>Crew Information:
