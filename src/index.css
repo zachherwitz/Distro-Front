@@ -188,7 +188,9 @@ input {
   background-color: #eeb53c;
   opacity: .85;
   border: none;
-  border-radius: 10px;
+  color: white;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 5px 5px 50px 0;
 }
 
 .splash-text button:hover{
@@ -292,6 +294,8 @@ input {
 
 .admin-user-display button {
   background-color: white;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 5px 5px 50px 0;
 }
 
 #admin-user-button {
