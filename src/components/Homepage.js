@@ -4,25 +4,25 @@ class Homepage extends React.Component {
   render = () => {
     return <div className="homepage">
       <div className="homepage-section-container">
-        <section className="user-section">
+        <section id="user-section">
           <h1>USERS</h1>
-          <p>Create new user profiles to add members to your team! Update or delete user profiles to make changes to your crew! Check individual crew call times, locations, and contact information. View all crew members at once! </p>
+          <div>Create new user profiles to add members to your team! <br/><br/> Update or delete user profiles to make changes to your crew! <br/><br/> Check individual crew call times, locations, and contact information. <br/><br/> View all crew members at once! </div>
           <button
             className="homepage-button"
             route="allUsers"
             onClick={this.props.changeRoute}>VIEW</button>
         </section>
-        <section className="callsheet-section">
+        <section id="callsheet-section">
           <h1>CALLSHEET</h1>
-          <p>Create a new callsheet with general call times, location, script info, safety notes, and much more. Add recipients from a list of all crew members. Add unique call times or locations for specific users. Deseminate personalized information to all recipients with a click of a button.</p>
+          <div>Create a new callsheet with general call times, location, script info, safety notes, and much more. <br/><br/> Add recipients from a list of all crew members. Add unique call times or locations for specific users. <br/><br/> Deseminate personalized information to all recipients with a click of a button.</div>
           <button
             className="homepage-button"
             route="createCallsheet"
             onClick={this.props.changeRoute}>START</button>
         </section>
-        <section className="distro-section">
+        <section id="distro-section">
           <h1>DISTRO</h1>
-          <p>Filter through all crew members by name, department, or distro group. Sending emails to single users or entire departments has never been simpler</p>
+          <div>Filter through all crew members by name, department, or distro group. <br/><br/> Sending emails to single users or entire departments has never been simpler</div>
           <button
             className="homepage-button"
             route="distro"

@@ -315,32 +315,50 @@ html, body, #root, .app-container {
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0 20%;
+  padding: 20% 25% 0 25%;
   height: 100%;
+  font-family: 'Raleway';
 }
 
 .homepage-button {
   background-color: white;
   margin: 0 auto;
-  width: 40%;
 }
 
-.user-section {
+.homepage h1 {
+  margin: 0;
+  font-family: 'fatfrank';
+  margin-bottom: 2rem;
+}
+
+#user-section {
   grid-column: 1 / 2;
   background-image: url('../src/images/homepage/Homepage1.png');
 }
 
-.callsheet-section {
+#callsheet-section {
   grid-column: 2 / 3;
   background-image: url('../src/images/homepage/Homepage2.png');
 }
 
-.distro-section {
+#distro-section {
   grid-column: 3 / 4;
   background-image: url('../src/images/homepage/Homepage1.png');
+}
+
+.homepage section > button {
+  font-family: 'fatfrank';
+  width: 100%;
+  background: transparent;
+  opacity: .7;
+  text-decoration: underline;
+  outline: none;
+  border: none;
+  margin-top: 2rem;
+}
+
+.homepage section > button:hover {
+  opacity: 1;
 }
 
 /* --USER STYLES */
@@ -808,10 +826,18 @@ html, body, #root, .app-container {
   opacity: 1;
 }
 
+/* --WEATHER STYLES */
+.weather-widget {
+  border: 1px dotted black;
+  padding: 2rem;
+}
 
 /* --FOOTER STYLES */
 
 footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
   background: #eeb53c;
   color: white;
   text-shadow: 1px 1px black;
@@ -841,6 +867,8 @@ footer {
 
 .socials a {
   color: white;
+  border: 1px solid white;
+  margin: .2rem .5rem;
 }
 
 .socials a:hover {

@@ -8,7 +8,7 @@ class Footer extends React.Component {
         <div className="socials">
           <a
             target="_blank"
-            href="https://github.com/zachherwitz/">
+            href="https://github.com/zachherwitz/Distro-Front">
             <i className="fab fa-2x fa-github"></i>
           </a>
           <a
