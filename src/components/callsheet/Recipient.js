@@ -40,13 +40,13 @@ class Recipient extends React.Component {
 
   render = () => {
     const { user } = this.props;
-    return <div>
+    return <div className="recipient">
       <div style={{display: 'flex'}}>
-        <div>
+        <div id="recipient-info">
           {user.name}{user.title ? " - " + user.title : null}
         </div>
         {this.state.toggleSpecifics ?
-          <div>
+          <div className="recipient-specs">
             <input
               onKeyUp={this.handleInput}
               type="text"
@@ -57,9 +57,9 @@ class Recipient extends React.Component {
               type="text"
               id="location"
               placeholder="specific location"/>
-            <button onClick={this.submitSpecs}>Add To Recipients</button>
+            <button id="recipient-add-button" onClick={this.submitSpecs}>Add</button>
           </div>
-        : <button onClick={this.toggleSpecifics}>{this.state.toggleSpecifics?'-':'+'}</button>}
+        : <button id="recipient-specs-button" onClick={this.toggleSpecifics}>{this.state.toggleSpecifics?'-':'+'}</button>}
       </div>
     </div>
   }

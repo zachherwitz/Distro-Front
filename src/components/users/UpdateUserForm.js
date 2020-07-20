@@ -36,8 +36,9 @@ class UpdateUserForm extends React.Component {
   }
 
   render = () => {
-    return <div>
+    return <div className="single-user-update">
     <form onSubmit={this.updateUser}>
+      <label>Name: </label>
       <input
         autoComplete="off"
         ref={input => this.updatedName = input}
@@ -46,6 +47,7 @@ class UpdateUserForm extends React.Component {
         type="text"
         defaultValue={this.props.displayUser.name}/>
       <br/>
+      <label>Department: </label>
       <input
         autoComplete="off"
         ref={input => this.updatedDepartment = input}
@@ -54,6 +56,7 @@ class UpdateUserForm extends React.Component {
         type="text"
         defaultValue={this.props.displayUser.department}/>
       <br/>
+      <label>Title: </label>
       <input
         autoComplete="off"
         ref={input => this.updatedTitle = input}
@@ -62,6 +65,7 @@ class UpdateUserForm extends React.Component {
         type="text"
         defaultValue={this.props.displayUser.title}/>
       <br/>
+      <label>Phone: </label>
       <input
         autoComplete="off"
         ref={input => this.updatedPhone = input}
@@ -70,6 +74,7 @@ class UpdateUserForm extends React.Component {
         type="text"
         defaultValue={this.props.displayUser.phone}/>
       <br/>
+      <label>Email: </label>
       <input
         autoComplete="off"
         ref={input => this.updatedEmail = input}
@@ -78,6 +83,7 @@ class UpdateUserForm extends React.Component {
         type="email"
         defaultValue={this.props.displayUser.email}/>
       <br/>
+      <label>Role: </label>
       <input
         autoComplete="off"
         ref={input => this.updatedRole = input}
@@ -86,7 +92,7 @@ class UpdateUserForm extends React.Component {
         type="text"
         defaultValue={this.props.displayUser.role}/>
       <br/>
-      <input type="Submit" readOnly value="Update User"/>
+      <input id="update-submit" type="Submit" readOnly value="Update User"/>
     </form>
     </div>
   }

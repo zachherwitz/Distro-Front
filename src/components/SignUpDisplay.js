@@ -108,7 +108,7 @@ class SignUpDisplay extends React.Component {
         <hr></hr>
         {!this.state.toggleAdvancedSetup
         ?
-          <button onClick={this.toggleAdvancedSetup}>Advanced Setup</button>
+          <button className="signup-advanced-button" onClick={this.toggleAdvancedSetup}>Advanced Setup</button>
         :
         <div className="signup-extra-input-container">
           <input
@@ -145,15 +145,15 @@ class SignUpDisplay extends React.Component {
                     onKeyUp={this.handleDistros}
                     id={"distro" + index}
                   />
-                  <button onClick={this.additionalDistro}>+</button>
+                  <button className="signup-distro-button" onClick={this.additionalDistro}>+</button>
                 </div>
               })}
             </div>
-            <p>Copy goes here explaining what distros are, and how to eventually use them</p>
+            <p>A distro is a distribution group, but think of it like a tag. You will be able to sort through your project using distros, so add as many as you like.</p>
           </div>
         </div>
       }
-        <input type="submit" value="Sign Up"/>
+        <input id="signup-submit" type="submit" value="Sign Up"/>
       </form>
     </div>
   }

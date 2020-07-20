@@ -45,6 +45,7 @@ class NewCallsheetForm extends React.Component {
       }
       // console.log(callsheetObject);
       this.props.createCallsheet(callsheetObject);
+      this.setState({allCalled:[]})
     })
   }
 
@@ -77,6 +78,7 @@ class NewCallsheetForm extends React.Component {
   render = () => {
     return <div className="callsheet-form">
       <form onSubmit={this.composeCallsheet}>
+        <label>Project Name: </label>
         <input
           onKeyUp={this.handleInput}
           required
@@ -84,6 +86,7 @@ class NewCallsheetForm extends React.Component {
           type="text"
           placeholder="project title"/>
         <br/>
+        <label>Date: </label>
         <input
           onKeyUp={this.handleInput}
           required
@@ -91,6 +94,7 @@ class NewCallsheetForm extends React.Component {
           type="text"
           placeholder="date"/>
         <br/>
+        <label>Crew Calltime: </label>
         <input
           onKeyUp={this.handleInput}
           required
@@ -98,6 +102,7 @@ class NewCallsheetForm extends React.Component {
           type="text"
           placeholder="crew call time"/>
         <br/>
+        <label>Crew Location: </label>
         <input
           onKeyUp={this.handleInput}
           required
@@ -105,6 +110,7 @@ class NewCallsheetForm extends React.Component {
           type="text"
           placeholder="crew location"/>
         <br/>
+        <label>Zip Code: </label>
         <input
           onKeyUp={this.handleInput}
           id="zipcode"
@@ -112,8 +118,8 @@ class NewCallsheetForm extends React.Component {
           required
           placeholder="zip code"/>
         <br/>
-        <button onClick={this.toggleAddRecipients}>Add Recipients</button>
-        <input type="submit" value="Submit Callsheet"/>
+        <button id="add-recipients-button" onClick={this.toggleAddRecipients}>Add Recipients</button>
+        <input id="callsheet-submit" type="submit" value="Submit Callsheet"/>
         {this.state.allCalled[0] ? this.state.allCalled.map((user, index) => {
           return <div key={index}>{user.user.name}</div>
         }): <div>No one added yet</div>}

@@ -42,7 +42,7 @@ class LogInDisplay extends React.Component {
             onKeyUp={this.handleInput}
             id="password"/>
           </div>
-        <input type="submit" value="Log In"/>
+        <input id="login-submit" type="submit" value="Log In"/>
       </form>
     </div>
   }

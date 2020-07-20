@@ -4,10 +4,6 @@ html, body, #root, .app-container {
   font-family: 'fatfrank', sans-serif;
 }
 
-input {
-  font-family: Arial;
-}
-
 .app-container {
   display: grid;
   grid-template-rows: 10% 1fr 10%;
@@ -96,12 +92,43 @@ input {
   margin: .5rem;
 }
 
-.signup-form form {
-
-}
-
 .signup-form input {
   margin: .5rem 0;
+  font-family: 'Raleway';
+  border: none;
+  border-bottom: 1px groove black;
+  padding-left: .5rem;
+}
+
+.signup-form input:focus {
+  outline: none;
+}
+
+.signup-advanced-button {
+  font-size: 1rem;
+  background-color: #eeb53c;
+  opacity: .85;
+  padding: .5rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+}
+
+.signup-advanced-button:hover {
+  opacity: 1;
+}
+
+.signup-distro-button {
+  font-size: 1.4rem;
+  border: none;
+  margin-left: .5rem;
+  background-color: #eeb53c;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 5px 5px 50px 0;
+}
+
+.signup-distro-button:focus {
+  outline: none;
 }
 
 .signup-input-container {
@@ -119,9 +146,25 @@ input {
 }
 
 .distro-container p {
-  width: 40%;
+  width: 60%;
   margin: 0 auto;
   padding-top: 1rem;
+}
+
+#signup-submit {
+  font-size: 1rem;
+  background-color: #eeb53c;
+  opacity: .85;
+  padding: .5rem 1rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-family: 'fatfrank';
+  margin-left: 2rem;
+}
+
+#signup-submit:hover {
+  opacity: 1;
 }
 
 /* --LOGIN STYLES */
@@ -145,6 +188,25 @@ input {
 
 .login-form input {
   margin: .5rem 0;
+  font-family: 'Raleway';
+  border: none;
+  border-bottom: 1px groove black;
+  padding-left: .5rem;
+}
+
+#login-submit {
+  font-size: 1rem;
+  background-color: #eeb53c;
+  opacity: .85;
+  padding: .5rem 1rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-family: 'fatfrank';
+}
+
+#login-submit:hover {
+  opacity: 1;
 }
 
 /* --SPLASH STYLES */
@@ -195,6 +257,10 @@ input {
 
 .splash-text button:hover{
   opacity: 1;
+}
+
+.splash-text button:focus {
+  outline: none;
 }
 
 .splash-image-container {
@@ -378,6 +444,91 @@ input {
   width: 100%;
 }
 
+
+/* --SINGLE USER DISPLAY STYLES */
+
+.single-user-display-admin h2 {
+  font-family: 'fatfrank';
+  letter-spacing: .05rem;
+}
+
+.single-user-display-admin h4 {
+  font-family: 'Raleway';
+}
+
+.single-user-display-admin ul {
+  padding: 0;
+  margin: 2rem;
+  font-family: 'fatfrank';
+}
+
+.single-user-display-admin li {
+  padding: 0;
+  margin: 0 .5rem;
+  list-style: none;
+  font-family: 'Raleway';
+}
+
+.single-user-display-admin-extra-info {
+  display: flex;
+}
+
+.single-user-display-admin button {
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  padding: .5rem;
+  margin-bottom: 1rem;
+  background-color: #eeb53c;
+  opacity: .85;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-family: 'fatfrank';
+}
+
+.single-user-display-admin button:hover {
+  opacity: 1;
+}
+
+.single-user-display-admin button:focus {
+  outline: none;
+}
+
+/* --EDIT USER STYLES */
+
+.single-user-update {
+
+}
+
+.single-user-update label {
+  font-family: 'fatfrank';
+}
+
+.single-user-update input {
+  margin: .5rem;
+  width: 70%;
+  font-family: 'Raleway';
+  border: none;
+  border-bottom: 1px groove black;
+  padding-left: .5rem;
+}
+
+#update-submit {
+  font-size: 1rem;
+  background-color: #eeb53c;
+  opacity: .85;
+  padding: .5rem 1rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-family: 'fatfrank';
+  margin-left: 2rem;
+}
+
+#update-submit:hover {
+  opacity: 1
+}
+
 /* --CALLSHEET STYLES */
 
 .callsheet {
@@ -445,12 +596,129 @@ input {
   border-radius: 0px 0px 50px 0px;
 }
 
+.callsheet-form label {
+  font-family: "fatfrank";
+}
+
+.callsheet-form input {
+  margin: .5rem;
+  font-family: 'Raleway';
+  border: none;
+  border-bottom: 1px groove black;
+  padding-left: .5rem;
+  width: 70%;
+}
+
+.callsheet-form input:focus {
+  outline: none;
+}
+
+#add-recipients-button {
+  font-size: 1rem;
+  background-color: #eeb53c;
+  opacity: .85;
+  padding: .5rem 1rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-family: 'fatfrank';
+  margin-left: 2rem;
+}
+
+#add-recipients-button:hover {
+  opacity: 1;
+}
+
+#callsheet-submit {
+  width: 40%;
+  font-size: 1rem;
+  background-color: #eeb53c;
+  opacity: .85;
+  padding: .5rem 1rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-family: 'fatfrank';
+  margin-left: 2rem;
+}
+
+#callsheet-submit:hover {
+  opacity: 1;
+}
+
 .callsheet-right {
   background-image: url('../src/images/callsheet/CameraPerson.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: bottom;
 }
+
+.add-recipients-title {
+  font-family: "fatfrank";
+  font-size: 2rem;
+}
+
+.add-recipients-text {
+  font-family: "Raleway";
+  font-size: 1.5rem;
+}
+
+#confirm-recipients-button {
+  font-size: 1rem;
+  background-color: #eeb53c;
+  opacity: .85;
+  padding: .5rem 1rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-family: 'fatfrank';
+  margin-top: 1rem;
+}
+
+#confirm-recipients-button:hover {
+  opacity: 1;
+}
+
+/* --RECIPIENT STYLES */
+
+#recipient-info {
+  display: flex;
+  align-items: center;
+  padding: none;
+  margin: none;
+  align-items: center;
+  font-family: 'Raleway'
+}
+
+.recipient-specs input {
+  margin: .5rem;
+  font-family: 'Raleway';
+  border: none;
+  border-bottom: 1px groove black;
+  padding-left: .5rem;
+}
+
+#recipient-add-button {
+  font-size: 1rem;
+  background-color: #eeb53c;
+  opacity: .85;
+  outline: none;
+  border: none;
+  border-radius: 5px;
+  font-family: 'fatfrank';
+  margin-left: .5rem;
+}
+
+#recipient-specs-button {
+  margin-left: 1rem;
+  font-size: 1.4rem;
+  background-color: #eeb53c;
+  opacity: .85;
+  border: none;
+  box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+  border-radius: 5px 5px 50px 0;
+}
+
 
 /* --DISTRO STYLES */
 
