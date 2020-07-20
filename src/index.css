@@ -277,6 +277,38 @@ input {
   background-image: url('../src/images/homepage/Homepage1.png');
 }
 
+/* --USER STYLES */
+
+.user-role-view {
+  padding: 5%;
+  display: grid;
+  grid-template-columns: 35% 1fr 35%;
+}
+
+.user-left {
+  background-image: url('../src/images/callsheet/OfficePerson.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.user-information {
+  margin: 0 auto;
+  border: 3px solid #eeb53c;
+  border-top: 30px solid #eeb53c;
+  border-left: 30px solid #eeb53c;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 0px 0px 50px 0px;
+  padding: 5%;
+}
+
+.user-right {
+  background-image: url('../src/images/callsheet/CameraPerson.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
 /* --USER-ADMIN STYLES */
 
 .admin-user-display {
