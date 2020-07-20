@@ -13,8 +13,7 @@ class DistroDisplay extends React.Component{
     })
     console.log(userEmails);
     let emailAddresses = userEmails
-    let emailSubject = 'test subject'
-    window.open(`mailto:${emailAddresses}?subject=${emailSubject}`)
+    window.open(`mailto:${emailAddresses}`)
   }
 
   search = (e) => {
@@ -55,28 +54,37 @@ class DistroDisplay extends React.Component{
 
   render = () => {
     return <div className="distro-display">
-      <h1>Distro Display</h1>
-      <form onSubmit={this.search}>
-        <select
-          id="search-type"
-          name="search-type"
-          ref={input => this.searchtype = input}>
-          <option value="name">name</option>
-          <option value="dept">dept</option>
-          <option value="distro">distro</option>
-        </select>
-        <input
-          type="text"
-          id="search-bar"
-          ref={input => this.searchbar = input}
-          placeholder="search"/>
-        <input type="submit" value="search"/>
+      <form className="distro-search-form" onSubmit={this.search}>
+        <h1>Search by Name, Department, or Distro Group</h1>
+        <div>
+          <select
+            id="search-type"
+            name="search-type"
+            ref={input => this.searchtype = input}>
+            <option value="name">name</option>
+            <option value="dept">dept</option>
+            <option value="distro">distro</option>
+          </select>
+          <input
+            type="text"
+            id="search-bar"
+            ref={input => this.searchbar = input}
+            placeholder="search"/>
+          </div>
+        <input id="search-submit" type="submit" value="Search"/>
       </form>
-      {this.state.returnedUsers ? this.state.returnedUsers.map(
-        (user, index) => {
-          return <li key={index}>{user.name} - {user.department} - {user.email}</li>
-      }) : null}
-      <button onClick={this.collectEmails}>Collect Emails</button>
+      <div className="distro-search-results">
+        {this.state.returnedUsers ? <hr></hr> : null}
+        {this.state.returnedUsers ? <h1>Users Found: </h1> : null}
+        {this.state.returnedUsers ? <h3>Select 'Collect Emails' to generate a blank email to group</h3>
+ : null}
+        {this.state.returnedUsers ? this.state.returnedUsers.map(
+          (user, index) => {
+            return <li key={index}>{user.name} - {user.department} - {user.title?user.title + " - ":null} {user.email}</li>
+        }) : null}
+        {this.state.returnedUsers ? <button id="collect-emails-button" onClick={this.collectEmails}>Collect Emails</button> : null}
+
+      </div>
     </div>
   }
 }

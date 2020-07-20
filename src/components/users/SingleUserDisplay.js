@@ -16,6 +16,7 @@ class SingleUserDisplay extends React.Component {
             </div> : null }
           <h4>CALL: {this.props.user.callsheet.callTime}</h4>
           <h4>REPORT TO {this.props.user.callsheet.location}</h4>
+          <hr></hr>
           {this.props.callsheet ? <Weather callsheet={this.props.callsheet}/> : null}
         </div>
       </div>

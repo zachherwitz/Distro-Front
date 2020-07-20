@@ -31,7 +31,7 @@ class AddRecipients extends React.Component {
   render = () => {
     return <div className="add-recipients">
       <div className="add-recipients-title">Add recipients to the callsheet!</div>
-      <div className="add-recipients-text">Click the plus button next to the user's name to adjust specific their call time and location.</div>
+      <div className="add-recipients-text">Click the plus button next to the user's name to adjust their specific call time and location.</div>
       <hr></hr>
       {this.props.allUsers.map((user, index) => {
         return <div key={index}>
