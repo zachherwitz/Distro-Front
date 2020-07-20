@@ -38,12 +38,8 @@ class NewCallsheetForm extends React.Component {
       let callsheetObject = {
         projectTitle: this.state.projectTitle,
         date: this.state.date,
-        episode: this.state.episode,
-        day: this.state.day,
-        scriptDraft: this.state.scriptDraft,
         generalCallTime: this.state.crewCallTime,
         generalLocation: this.state.crewLocation,
-        nearestHospital: this.state.hospital,
         allCalled: this.state.allCalled,
         weather: weatherObject
       }
@@ -129,24 +125,6 @@ class NewCallsheetForm extends React.Component {
         <br/>
         <input
           onKeyUp={this.handleInput}
-          id="episode"
-          type="text"
-          placeholder="episode"/>
-        <br/>
-        <input
-          onKeyUp={this.handleInput}
-          id="day"
-          type="text"
-          placeholder="day"/>
-        <br/>
-        <input
-          onKeyUp={this.handleInput}
-          id="scriptDraft"
-          type="text"
-          placeholder="script draft"/>
-        <br/>
-        <input
-          onKeyUp={this.handleInput}
           required
           id="crewCallTime"
           type="text"
@@ -158,12 +136,6 @@ class NewCallsheetForm extends React.Component {
           id="crewLocation"
           type="text"
           placeholder="crew location"/>
-        <br/>
-        <input
-          onKeyUp={this.handleInput}
-          id="hospital"
-          type="text"
-          placeholder="nearest hopsital"/>
         <br/>
         <input
           onKeyUp={this.handleInput}

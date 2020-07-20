@@ -259,8 +259,8 @@ class App extends React.Component {
               <SignUpDisplay src="splash" signup={this.signup}/>
             </ModalBody>
           </Modal> : null}
-        {this.state.isLoggedIn && this.state.users[0] && this.state.role === "user"? <SingleUserDisplay user={this.state.users[0]}/> : null}
-        {this.state.route === "" && this.state.isLoggedIn ? <Homepage changeRoute={this.changeRoute}/> : null}
+        {this.state.isLoggedIn && this.state.users[0] && this.state.role === "user"? <SingleUserDisplay callsheet={this.state.callsheet} user={this.state.users[0]}/> : null}
+        {this.state.route === "" && this.state.isLoggedIn && this.state.role === "admin" ? <Homepage changeRoute={this.changeRoute}/> : null}
         {this.state.route === "allUsers" && this.state.isLoggedIn ?
           <UserDisplay
             callsheet={this.state.callsheet}
