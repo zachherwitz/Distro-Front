@@ -1,77 +1,44 @@
-IN SERVER.JS
-// IMPORTANT // IMPORTANT // IMPORTANT // IMPORTANT // IMPORTANT //
-//   CHANGE to origin:'https://distro-app.herokuapp.com' WHEN LIVE  //
-// IMPORTANT // IMPORTANT // IMPORTANT // IMPORTANT // IMPORTANT //
+<div style="text-align: center">
+<h1 style="margin:0">d|STRO</h1>
+<h2  style="margin:10px">Contacts, Contactless</h2>
+</div>
+---
+
+### Distribution can be difficult.
+
+Do you and your boss have a different idea of what 'send it wide' means?
+
+Are you tired of accidentally sending nudity riders to day-playing grips?
+
+Does HR want you to add YET ANOTHER INTERN to the monthly pizza party chain?
+
+### Have you met d|STRO?
+d|STRO is a full service, film and television production facing application that protects the security of your team, while also delivering a couldn't-be-easier solution to information distribution and disemination.
+##### Distribution has never been simpler
+
+
+### Features:
+<ins>A user can:</ins>
+- Create a new project, and add their entire team
+- Search through the team using names, distros, or departments
+- Automatically generate emails to groups based on name, distro, or department
+- Push Call Sheet information to all recipients, or designate specific times and locations for individual project members
+- View local weather forecast based on Call Sheet date and locations
+- Remain logged in after closing window or navigating to different site
+- Enjoy some dope illustrations created by [Olivia McGiff](https://www.instagram.com/oliviamcgiff/?hl=en)
+
+
+### Tech:
+| FRONT                  | API              | DB       |
+|------------------------|------------------|----------|
+| React                  | Express          | mongoDB  |
+| React Bootstrap        | Express Sessions | Mongoose |
+| React Transition Group | Express - CORS   |          |
 
 
 
+![DISTRO APP](https://i.imgur.com/cJrMAa8.png)
+---
+![DISTRO APP](https://i.imgur.com/UORSsQj.png)
 
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+### ~ [created by zach herwitz](https://github.com/zachherwitz/) ~
