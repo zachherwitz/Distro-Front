@@ -14,7 +14,7 @@ Does HR want you to add YET ANOTHER INTERN to the monthly pizza party chain?
 
 ### Have you met [d|STRO](https://distro-app.herokuapp.com/)?
 d|STRO is a full service, film and television production facing application that protects the security of your team, while also delivering a couldn't-be-easier solution to information distribution and disemination.
-##### Distribution has never been simpler
+### Distribution has never been simpler
 
 
 ### Features:
