@@ -2,7 +2,7 @@
 <h1 style="margin:0">d|STRO</h1>
 <h2  style="margin:10px">Contacts, Contactless</h2>
 </div>
----
+
 
 ### Distribution can be difficult.
 
@@ -12,7 +12,7 @@ Are you tired of accidentally sending nudity riders to day-playing grips?
 
 Does HR want you to add YET ANOTHER INTERN to the monthly pizza party chain?
 
-### Have you met d|STRO?
+### Have you met [d|STRO](https://distro-app.herokuapp.com/)?
 d|STRO is a full service, film and television production facing application that protects the security of your team, while also delivering a couldn't-be-easier solution to information distribution and disemination.
 ##### Distribution has never been simpler
 
