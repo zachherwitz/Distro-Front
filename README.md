@@ -35,7 +35,13 @@ d|STRO is a full service, film and television production facing application that
 | React Bootstrap        | Express Sessions | Mongoose |
 | React Transition Group | Express - CORS   |          |
 
-
+### Moving Forward:
+- The infrastructure is set up to have multiple projects, with each crew having a 'Project ID'
+- Implementation of a search bar when adding recipients to the Call Sheet, for projects with larger crew sizes
+- Google OAuth
+- Ability to import contacts using Google Contacts or .csv files
+- Implementation of EmailJS and jsPDF to easily turn Call Sheets into  PDFs.
+- Alert system letting users know they have new Callsheet Info.
 
 ![DISTRO APP](https://i.imgur.com/cJrMAa8.png)
 ---
