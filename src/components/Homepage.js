@@ -1,5 +1,7 @@
 import React from 'react';
 
+// This is the desplay a logged in user will see, giving them descriptions of each route, and its intended functionality.
+
 class Homepage extends React.Component {
   render = () => {
     return <div className="homepage">

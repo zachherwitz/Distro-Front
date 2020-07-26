@@ -2,6 +2,7 @@ import React from 'react';
 
 class LogInDisplay extends React.Component {
 
+  // Takes input and adds information as a property in the state
   handleInput = (e) => {
     const attributeId = e.target.getAttribute('id');
     switch (attributeId) {
@@ -13,6 +14,7 @@ class LogInDisplay extends React.Component {
     }
   }
 
+  // Passes newLogin object up to the App component, where it is passed to the Users API to return the user's full info (or all info if the user is an Admin) 
   handleLogin = (e) => {
     e.preventDefault()
     let newLogin = {

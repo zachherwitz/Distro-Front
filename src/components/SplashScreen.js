@@ -1,6 +1,7 @@
 import React from 'react';
 import Splash from './../images/splash/SplashHeroCropped.png'
 
+// This is displayed when a user is not logged in, and visits the website
 class SplashScreen extends React.Component {
   render = () => {
     return <div

@@ -1,11 +1,13 @@
 import React from 'react';
 
+// This is the module that pops up whenever a user clicks 'Sign Up', or when an Admin creates a new user
 class SignUpDisplay extends React.Component {
   state = {
     toggleAdvancedSetup: false,
     numOfDistroInputs: ['index']
   }
 
+  // Add additionaly distro inputs
   additionalDistro = (e) => {
     e.preventDefault()
     let numOfDistroInputsArray = this.state.numOfDistroInputs;
@@ -15,6 +17,7 @@ class SignUpDisplay extends React.Component {
     })
   }
 
+  // Takes input and adds to a distro array in the state
   handleDistros = (e) => {
     const attributeId = e.target.getAttribute('id');
     switch (attributeId) {
@@ -26,6 +29,7 @@ class SignUpDisplay extends React.Component {
     }
   }
 
+  // Takes input and adds information as a property in the state
   handleInput = (e) => {
     const attributeId = e.target.getAttribute('id');
     switch (attributeId) {
@@ -37,6 +41,7 @@ class SignUpDisplay extends React.Component {
     }
   }
 
+  // Creates a new object using the current State (values inputted into the form) and then passes that object up to the App component, where it is used to make a POST request to the users API.
   handleSignup = (e) => {
     e.preventDefault()
     if(this.props.toggle) {
@@ -49,10 +54,8 @@ class SignUpDisplay extends React.Component {
         let distroValue = this.state[distroNum].trim()
         distroArray.push(distroValue.toLowerCase())
       }
-
-      // console.log(distroArray);
     })
-
+    // Object to be pushed up to the App component
     let newSignup = {
       name: this.state.name,
       email: this.state.email,
@@ -64,13 +67,13 @@ class SignUpDisplay extends React.Component {
       distros: distroArray,
       src: this.props.src
     }
-    // console.log(newSignup);
     this.props.signup(newSignup)
     if(this.props.refreshAllUsers) {
       this.props.refreshAllUsers();
     }
   }
 
+  // Toggles the display of advanced options in the signup form
   toggleAdvancedSetup = (e) => {
     e.preventDefault()
     this.setState({

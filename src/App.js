@@ -18,14 +18,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import axios from 'axios';
 
-// let colorPairs = [
-//   {
-//     navColor: '#eeb53c',
-//     textColor: '#181818',
-//   }
-// ]
-
-
 class App extends React.Component {
   state = {
     users: [],
@@ -36,7 +28,7 @@ class App extends React.Component {
     signupShow: false,
   }
 
-  // Makeshift Route Changing until I can figure out router
+  // Change the page based on 'route' attribute of target
   changeRoute = (e) => {
     let updatedRoute = e.target.getAttribute('route');
     this.setState({
@@ -67,19 +59,11 @@ class App extends React.Component {
     })
   }
 
-  // This is me venting after a long night of session work ><
-  // colorRandomizer = () => {
-  //   let combo = colorPairs[Math.floor(Math.random() * colorPairs.length)]
-  //   this.setState({
-  //     navColor:combo.navColor,
-  //     textColor:combo.textColor
-  //   })
-  // }
-
   componentDidMount = () => {
-    // this.colorRandomizer()
+    // Check to see if there is session data to maintain login
     axios.get('https://distro-app-api.herokuapp.com/session', {withCredentials:true}).then((response) => {
       if(response.data.role === "admin") {
+        // if the user has the role of 'admin', set the state to have a role of 'admin' and push all user data into the state
         axios.get('https://distro-app-api.herokuapp.com/users').then(
           (response) => {
             this.setState({
@@ -88,6 +72,7 @@ class App extends React.Component {
               role: 'admin'
             }
           )
+          // Get the current callsheet data
           axios.get('https://distro-app-api.herokuapp.com/callsheet').then((response) => {
             this.setState({
               callsheet: response.data[response.data.length - 1]
@@ -95,6 +80,7 @@ class App extends React.Component {
           })
         })
       } else if(response.data.role === "user") {
+        // if the user has the role of 'user', set the state to have a role of 'user' and push the specific user's information into the state
         axios.get('https://distro-app-api.herokuapp.com/users/user/' + response.data.email).then(
           (response) => {
             this.setState({
@@ -102,6 +88,7 @@ class App extends React.Component {
               users: response.data,
               role: 'user'
             })
+          // Get the current callsheet data (for weather and project name)
           axios.get('https://distro-app-api.herokuapp.com/callsheet').then((response) => {
             this.setState({
               callsheet: response.data[response.data.length - 1]
@@ -120,9 +107,9 @@ class App extends React.Component {
     })
   }
 
+  // Login is pretty much the same functionality as ComponentDidMount, except there is a POST request to the API instead of a GET
   login = (obj) => {
-    // Post Request to API SESSION (NOT WORKING YET)
-    // console.log(obj);
+    // Post Request to API SESSION
     axios.post('https://distro-app-api.herokuapp.com/session', obj, {withCredentials:true}).then((response) => {
       if(obj.email === response.data.email){
         this.setState({
@@ -165,6 +152,7 @@ class App extends React.Component {
     })
   }
 
+  // Make a DELETE request to the session API, effectively logging the user out
   logout = () => {
     axios.delete('https://distro-app-api.herokuapp.com/session', {withCredentials:true}).then(
       (response) => {
@@ -178,6 +166,7 @@ class App extends React.Component {
     })
   }
 
+  // Refreshes the specific user information
   refreshSingleUser = (obj) => {
     let updatedUserToDisplay = obj
     this.setState({
@@ -185,6 +174,7 @@ class App extends React.Component {
     })
   }
 
+  // Refreshes list of all users any time a user is updated, deleted, or created in the 'Users' tab
   refreshUserList = () => {
     console.log('refreshing user list');
     axios.get('https://distro-app-api.herokuapp.com/users').then((response) => {

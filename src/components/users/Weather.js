@@ -1,5 +1,7 @@
 import React from 'react';
 
+// A component that displays the weather, based on the weather section of the returned Callsheet object.
+
 class Weather extends React.Component {
   render = () => {
     return <div className="weather-widget">

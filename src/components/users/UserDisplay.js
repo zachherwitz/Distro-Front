@@ -13,6 +13,8 @@ import UserIllustration from "../../images/user/UserIllustration.png"
 
 import axios from "axios";
 
+// If logged in as an Admin, this displays all users associated with the current project.
+
 class UserDisplay extends React.Component {
   state = {
     showNewUserForm:false,
@@ -37,6 +39,7 @@ class UserDisplay extends React.Component {
     })
   }
 
+  // Refreshes user list - for when a user is created, edited, or deleted
   refreshAllUsers = () => {
     this.props.refreshUserList()
     axios.get('https://distro-app-api.herokuapp.com/users').then((response) => {

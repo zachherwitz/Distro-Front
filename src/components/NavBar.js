@@ -6,6 +6,8 @@ import ModalHeader from "react-bootstrap/ModalHeader";
 import ModalFooter from "react-bootstrap/ModalFooter";
 import ModalTitle from "react-bootstrap/ModalTitle";
 
+// NavBar acts as a button holder, but each button has a 'route' attribute. When pressed, each button passes the 'route' to the App component, where it is then used to determine what section of the site to display.
+
 class NavBar extends React.Component {
   state = {
     showLogin: false

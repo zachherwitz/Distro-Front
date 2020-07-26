@@ -6,6 +6,7 @@ class UpdateUserForm extends React.Component {
 
   }
 
+  // Takes input and adds information as a property in the state
   handleInput = (e) => {
     const attributeId = e.target.getAttribute('id');
     switch (attributeId) {

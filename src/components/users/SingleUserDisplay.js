@@ -3,7 +3,6 @@ import Weather from './Weather'
 
 class SingleUserDisplay extends React.Component {
   render = () => {
-    // console.log(JSON.stringify(this.props.callsheet));
     return <div className="user-role-view">
       <div className="user-left"></div>
       <div className="user-information">
