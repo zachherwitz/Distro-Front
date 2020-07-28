@@ -47,5 +47,5 @@ d|STRO is a full service, film and television production facing application that
 ---
 ![DISTRO APP](https://i.imgur.com/UORSsQj.png)
 
-### ~ [API Repository](https://github.com/zachherwitz/Distro-API)
+### ~ [api repository](https://github.com/zachherwitz/Distro-API) ~
 ### ~ [created by zach herwitz](https://github.com/zachherwitz/) ~
